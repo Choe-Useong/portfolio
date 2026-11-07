@@ -1,6 +1,292 @@
 'use strict';
 // 역량기술서 v2.1에서 확인되는 내용만 정리. 세부 성과는 제공된 GitHub 보고서 기준.
 const PORTFOLIO = {
+  quantReports: [
+  {
+    "id": "kr",
+    "title": "국내 주식 전략",
+    "subtitle": "모멘텀·시장 확산도를 활용한 종목 선정",
+    "period": "2016.01.04 – 2026.09.21",
+    "benchmark": "KOSPI",
+    "image": "assets/kr_stock_case.png",
+    "overview": "KOSPI 대형주 중 상대적으로 강한 흐름을 보인 종목을 선정하고, 시장 전반의 상승 종목 비율이 낮을 때는 현금으로 전환하는 전략 실험.",
+    "strategy": [
+      [
+        "투자 대상",
+        "전월 평균 시가총액 상위 100개 KOSPI 종목"
+      ],
+      [
+        "종목 선정",
+        "최근 12개월에서 최근 3개월을 제외한 모멘텀 순위 상위 최대 5개"
+      ],
+      [
+        "투자 비중",
+        "최대 5개 종목에 동일 비중, 시장 확산도 50% 이하일 때 현금"
+      ],
+      [
+        "조정 주기",
+        "월별"
+      ],
+      [
+        "거래비용 가정",
+        "수수료 0.15%·슬리피지 0.10%"
+      ]
+    ],
+    "metrics": [
+      [
+        "연평균 수익률(CAGR)",
+        "30.94%",
+        "13.25%"
+      ],
+      [
+        "최대낙폭(MDD)",
+        "-28.17%",
+        "-43.90%"
+      ],
+      [
+        "샤프 비율",
+        "1.31",
+        "0.65"
+      ]
+    ],
+    "validation": [
+      [
+        "후보군",
+        "모멘텀·시장 확산도 조건 16개"
+      ],
+      [
+        "SPA",
+        "p=0.0534"
+      ],
+      [
+        "PBO",
+        "64.29%"
+      ],
+      [
+        "Walk-Forward CAGR",
+        "10.51% (같은 평가기간 KOSPI 7.44%)"
+      ],
+      [
+        "Walk-Forward 최대낙폭",
+        "-47.52%"
+      ]
+    ],
+    "interpretation": "전체 기간에 선정한 고정 전략의 백테스트 수치와 기간별로 후보를 선택한 Walk-Forward 수치는 서로 다른 평가 방식. Walk-Forward의 위험 지표와 PBO 결과도 함께 확인할 필요.",
+    "sourceAnchor": "3-국내-주식-사례"
+  },
+  {
+    "id": "us",
+    "title": "미국 ETF 전략",
+    "subtitle": "상승월·추세 지속성을 활용한 ETF 선정",
+    "period": "2012.05.01 – 2026.05.29",
+    "benchmark": "원화 환산 SSO",
+    "image": "assets/us_etf_case.png",
+    "overview": "미국 상장 1배·2배 ETF 33개를 대상으로 상승 추세의 지속성과 변동성 조건을 검토하고 상위 종목에 투자하는 전략 실험. 비교 기준은 S&P 500 일간 2배 ETF인 SSO의 원화 환산 성과.",
+    "strategy": [
+      [
+        "투자 대상",
+        "미국 상장 1배·2배 ETF 33개"
+      ],
+      [
+        "종목 선정",
+        "상승월·추세 지속성·변동성 조건 통과 종목 중 순위 상위 최대 2개"
+      ],
+      [
+        "투자 비중",
+        "2개 선정 시 각 50%, 1개 선정 시 100%"
+      ],
+      [
+        "조정 주기",
+        "선정 종목 변경 시"
+      ],
+      [
+        "거래비용 가정",
+        "전략 수수료 0.05%·슬리피지 0%"
+      ]
+    ],
+    "metrics": [
+      [
+        "연평균 수익률(CAGR)",
+        "36.16%",
+        "26.63%"
+      ],
+      [
+        "최대낙폭(MDD)",
+        "-32.15%",
+        "-56.74%"
+      ],
+      [
+        "샤프 비율",
+        "1.14",
+        "0.88"
+      ]
+    ],
+    "validation": [
+      [
+        "후보군",
+        "상승월 기준 9개 후보"
+      ],
+      [
+        "SPA",
+        "p=0.2508"
+      ],
+      [
+        "PBO",
+        "10.00%"
+      ],
+      [
+        "Walk-Forward CAGR",
+        "32.86% (같은 평가기간 SSO 24.94%)"
+      ],
+      [
+        "Walk-Forward 최대낙폭",
+        "-32.15%"
+      ]
+    ],
+    "interpretation": "고정 사례의 성과는 전체 기간 분석 결과이고, Walk-Forward CAGR은 별도 평가 구간의 결과. SPA p값 0.2508로 SSO 대비 초과성과의 통계적 유의성은 확인되지 않음.",
+    "sourceAnchor": "4-미국-etf-사례"
+  },
+  {
+    "id": "btc",
+    "title": "BTC 현물 전략",
+    "subtitle": "이동평균·변동성 조건을 활용한 매매",
+    "period": "2019.09.25 – 2026.10.27",
+    "benchmark": "BTC 단순 보유",
+    "image": "assets/btc_spot_case.png",
+    "overview": "가격 추세와 변동성 조건에 따라 BTC 현물 보유 비중을 0% 또는 100%로 전환하는 전략 실험.",
+    "strategy": [
+      [
+        "투자 대상",
+        "KRW-BTC 현물"
+      ],
+      [
+        "매매 조건",
+        "10시간 이동평균이 120시간 이동평균보다 높고, 최근 변동성이 기준 이하인 경우 매수"
+      ],
+      [
+        "투자 비중",
+        "조건 충족 시 BTC 100%, 미충족 시 현금 100%"
+      ],
+      [
+        "실행 기준",
+        "1시간봉 종가로 계산하고 다음 봉 시가에 반영"
+      ],
+      [
+        "거래비용 가정",
+        "수수료 0.05%·슬리피지 0%"
+      ]
+    ],
+    "metrics": [
+      [
+        "연평균 수익률(CAGR)",
+        "80.03%",
+        "38.90%"
+      ],
+      [
+        "최대낙폭(MDD)",
+        "-35.78%",
+        "-74.85%"
+      ],
+      [
+        "샤프 비율",
+        "1.91",
+        "0.88"
+      ]
+    ],
+    "validation": [
+      [
+        "후보군",
+        "이동평균·변동성 제한 조건 27개"
+      ],
+      [
+        "SPA",
+        "p=0.2627"
+      ],
+      [
+        "PBO",
+        "32.99%"
+      ],
+      [
+        "Walk-Forward CAGR",
+        "35.56% (같은 평가기간 BTC 17.47%)"
+      ],
+      [
+        "Walk-Forward 최대낙폭",
+        "-36.28%"
+      ]
+    ],
+    "interpretation": "전체 기간 고정 사례 수치와 Walk-Forward 수치는 평가 구간과 후보 선택 방식이 다름. SPA p값 0.2627로 BTC 보유 대비 초과성과의 통계적 유의성은 확인되지 않음.",
+    "sourceAnchor": "5-btc-사례"
+  },
+  {
+    "id": "futures",
+    "title": "알트코인 선물 롱·숏 전략",
+    "subtitle": "거래대금·최근 수익률로 나눈 72개 조합 비교",
+    "period": "2020.01.01 – 2026.10.27",
+    "benchmark": "BTC 가격 보유",
+    "image": "assets/alt_futures_case_preview.png",
+    "overview": "BTC를 제외한 USDT 무기한 선물을 거래대금과 최근 수익률에 따라 9개 그룹으로 분류하고, 다른 두 그룹을 롱·숏으로 배정한 72개 조합을 비교한 실험.",
+    "strategy": [
+      [
+        "분류 기준",
+        "최근 7일 거래대금과 수익률을 각각 하위·중간·상위 3구간으로 나눠 9개 그룹 구성"
+      ],
+      [
+        "비교 방법",
+        "롱 9개 그룹 × 다른 숏 8개 그룹 = 72개 조합"
+      ],
+      [
+        "투자 비중",
+        "롱 50%·숏 50%, 각 방향 동일 비중"
+      ],
+      [
+        "조정 주기",
+        "매주 월요일 00:00 UTC"
+      ],
+      [
+        "비용·체결 가정",
+        "수수료 0.05%·슬리피지 0.02%, 펀딩·강제청산 반영"
+      ]
+    ],
+    "metrics": [
+      [
+        "연평균 수익률(CAGR)",
+        "40.88%",
+        "42.55%"
+      ],
+      [
+        "최대낙폭(MDD)",
+        "-35.05%",
+        "-77.24%"
+      ],
+      [
+        "샤프 비율",
+        "1.32",
+        "0.89"
+      ]
+    ],
+    "validation": [
+      [
+        "전체 조합",
+        "72개 중 누적수익률 양수 22개"
+      ],
+      [
+        "표시 사례",
+        "전체 기간 누적수익률 1위 조합"
+      ],
+      [
+        "SPA·PBO·Walk-Forward",
+        "이 실험에서는 미실시"
+      ],
+      [
+        "성과 선택 시점",
+        "전체 기간 결과를 확인한 후 상위 조합 선정"
+      ]
+    ],
+    "interpretation": "1위 조합은 전체 기간 결과를 보고 선정했으므로 독립적인 표본 외 검증 성과로 해석할 수 없음. BTC 보유는 거래비용·펀딩을 제외한 가격 수익률.",
+    "sourceAnchor": "6-알트코인-선물-거래대금주간-수익률-그룹-비교"
+  }
+],
   projects: [
     {
       id:'quant', featured:true, title:'퀀트 리서치·자동매매 시스템', short:'정량 투자전략 연구·백테스트 검증 및 주문 자동화 기능 구현', date:'2026.03 — 현재', affiliation:'개인 프로젝트',
@@ -11,13 +297,13 @@ const PORTFOLIO = {
         {heading:'구현 결과', items:[['전략 연구·백테스트 환경','종목 선정·비중 계산부터 여러 조건의 백테스트와 성과 비교까지 수행하는 시스템 구축'],['통계적 검증 기능','Walk-Forward·PBO·SPA·StepM 검증과 분석 결과 저장·조회 기능 구현'],['자동매매 운영 기능','주문 계획·제출, 체결 확인, 계좌 상태 기록, 중복 주문 방지 및 알림 기능 구현']]}
       ],
       skills:['Python','금융 데이터 처리','백테스트','통계적 검증','투자전략 구현','주문·계좌 관리'],
-      links:[{label:'GitHub 저장소',url:'https://github.com/Choe-Useong/quant-trading-system'},{label:'백테스트·검증 보고서',url:'https://github.com/Choe-Useong/quant-trading-system/blob/main/notes/strategy_examples.md'}],
+      links:[{label:'GitHub 저장소',url:'https://github.com/Choe-Useong/quant-trading-system'},{label:'백테스트·검증 보고서',url:'#/projects/quant/reports'}],
       visuals:[
         {title:'시스템 아키텍처',description:'데이터 준비, 투자전략 계산, 성과 검증, 주문·계좌 관리 기능의 전체 구성도',src:'https://raw.githubusercontent.com/Choe-Useong/quant-trading-system/main/notes/assets/system_architecture.png',source:'https://github.com/Choe-Useong/quant-trading-system/blob/main/notes/assets/system_architecture.png',kind:'architecture',altSteps:['데이터 수집·캐시','전략 신호·선정','목표 비중 계산','검증 및 주문 관리']},
-        {title:'국내 주식 백테스트 사례',description:'2016.01~2026.09 과거 분석의 연평균 수익률 30.94%(KOSPI 13.25%). 기간을 나눠 검증한 전략의 연평균 수익률 10.51%.',src:'assets/kr_stock_case.png',source:'https://github.com/Choe-Useong/quant-trading-system/blob/main/notes/assets/kr_stock_case.png',kind:'chart',altMetrics:[['전략 CAGR','30.94%'],['KOSPI CAGR','13.25%'],['WF CAGR','10.51%']]},
-        {title:'미국 ETF 백테스트 사례',description:'2012.05~2026.05 전체 기간 전략 CAGR 36.16%(원화 환산 SSO 26.63%). Walk-Forward 평가 구간 CAGR 32.86%(같은 기간 원화 환산 SSO 24.94%).',src:'assets/us_etf_case.png',source:'https://github.com/Choe-Useong/quant-trading-system/blob/main/notes/assets/us_etf_case.png',kind:'chart',altMetrics:[['전략 CAGR','36.16%'],['SSO CAGR','26.63%'],['WF CAGR','32.86%']]},
-        {title:'BTC 현물 백테스트 사례',description:'2019.09~2026.10 과거 분석의 연평균 수익률 80.03%(BTC 보유 38.90%). 기간을 나눠 검증한 전략의 연평균 수익률 35.56%.',src:'assets/btc_spot_case.png',source:'https://github.com/Choe-Useong/quant-trading-system/blob/main/notes/assets/btc_spot_case.png',kind:'chart',altMetrics:[['전략 CAGR','80.03%'],['BTC 보유 CAGR','38.90%'],['WF CAGR','35.56%']]},
-        {title:'알트코인 선물 롱·숏 백테스트 사례',description:'2020.01~2026.10, 거래대금과 최근 수익률로 구분한 9개 그룹의 롱·숏 72개 조합을 비교. 누적수익률 1위 조합의 CAGR 40.88%, 최대낙폭 -35.05%. 비교 기준 BTC 보유 CAGR 42.55%.',src:'assets/alt_futures_case_preview.png',source:'https://github.com/Choe-Useong/quant-trading-system/blob/main/notes/assets/alt_futures_case_preview.png',kind:'chart',altMetrics:[['사례 CAGR','40.88%'],['BTC 보유 CAGR','42.55%'],['최대낙폭','-35.05%']]}
+        {title:'국내 주식 백테스트 사례',description:'2016.01~2026.09 과거 분석의 연평균 수익률 30.94%(KOSPI 13.25%). 기간을 나눠 검증한 전략의 연평균 수익률 10.51%.',src:'assets/kr_stock_case.png',source:'https://github.com/Choe-Useong/quant-trading-system/blob/main/notes/assets/kr_stock_case.png',reportId:'kr',kind:'chart',altMetrics:[['전략 CAGR','30.94%'],['KOSPI CAGR','13.25%'],['WF CAGR','10.51%']]},
+        {title:'미국 ETF 백테스트 사례',description:'2012.05~2026.05 전체 기간 전략 CAGR 36.16%(원화 환산 SSO 26.63%). Walk-Forward 평가 구간 CAGR 32.86%(같은 기간 원화 환산 SSO 24.94%).',src:'assets/us_etf_case.png',source:'https://github.com/Choe-Useong/quant-trading-system/blob/main/notes/assets/us_etf_case.png',reportId:'us',kind:'chart',altMetrics:[['전략 CAGR','36.16%'],['SSO CAGR','26.63%'],['WF CAGR','32.86%']]},
+        {title:'BTC 현물 백테스트 사례',description:'2019.09~2026.10 과거 분석의 연평균 수익률 80.03%(BTC 보유 38.90%). 기간을 나눠 검증한 전략의 연평균 수익률 35.56%.',src:'assets/btc_spot_case.png',source:'https://github.com/Choe-Useong/quant-trading-system/blob/main/notes/assets/btc_spot_case.png',reportId:'btc',kind:'chart',altMetrics:[['전략 CAGR','80.03%'],['BTC 보유 CAGR','38.90%'],['WF CAGR','35.56%']]},
+        {title:'알트코인 선물 롱·숏 백테스트 사례',description:'2020.01~2026.10, 거래대금과 최근 수익률로 구분한 9개 그룹의 롱·숏 72개 조합을 비교. 누적수익률 1위 조합의 CAGR 40.88%, 최대낙폭 -35.05%. 비교 기준 BTC 보유 CAGR 42.55%.',src:'assets/alt_futures_case_preview.png',source:'https://github.com/Choe-Useong/quant-trading-system/blob/main/notes/assets/alt_futures_case_preview.png',reportId:'futures',kind:'chart',altMetrics:[['사례 CAGR','40.88%'],['BTC 보유 CAGR','42.55%'],['최대낙폭','-35.05%']]}
       ],
       processTitle:'정량 투자전략 연구·검증·운영 과정',
       processSummary:'시장 데이터 준비부터 전략 설계, 백테스트·통계적 검증, 주문·계좌 관리까지 주요 기능과 처리 절차',
