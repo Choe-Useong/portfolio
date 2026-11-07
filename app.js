@@ -29,6 +29,10 @@
     let fallback='#/';
     if(tokens[0]==='awards'){
       fallback=tokens.length>=3?'#/awards/recognition':(tokens.length===2?'#/awards':'#/');
+    }else if(tokens[0]==='projects'&&tokens[1]==='quant'&&tokens[2]==='report'){
+      fallback='#/projects/quant/reports';
+    }else if(tokens[0]==='projects'&&tokens[1]==='quant'&&tokens[2]==='reports'){
+      fallback='#/projects/quant';
     }else if((tokens[0]==='projects'||tokens[0]==='research')&&tokens.length>=2){
       fallback='#/'+tokens[0];
     }
@@ -53,7 +57,7 @@
   }
   function recognition(){return `${breadcrumb([{text:'홈',href:'#/'},{text:'자격증 및 수상',href:'#/awards'},{text:'수상'}])}${pageHeader('AWARDS','수상','학술 연구 및 경제논문 공모전 수상 이력','2개')}<section class="item-list" aria-label="수상 목록">${itemRows(PORTFOLIO.awards,'awards/recognition')}</section>`;}
   function contentCard(c,index){return `<section class="detail-card"><div class="detail-card-heading"><h2>${esc(c.heading)}</h2><span>0${index+1}</span></div><ul class="bullet-group">${c.items.map(pair=>`<li><strong>${esc(pair[0])}</strong><p>${esc(pair[1])}</p></li>`).join('')}</ul></section>`;}
-  function linkButtons(links){return links&&links.length?`<div class="detail-actions">${links.map(l=>`<a href="${esc(l.url)}" target="_blank" rel="noopener noreferrer">${esc(l.label)} <span aria-hidden="true">↗</span></a>`).join('')}</div>`:'';}
+  function linkButtons(links){return links&&links.length?`<div class="detail-actions">${links.map(l=>`<a href="${esc(l.url)}" ${l.url.startsWith('#/')?'':'target="_blank" rel="noopener noreferrer"'}>${esc(l.label)} <span aria-hidden="true">↗</span></a>`).join('')}</div>`:'';}
   function detail(key,id){
     const c=categories[key], item=c?.data.find(i=>i.id===id);if(!item)return notFound();
     if(key==='awards'){
@@ -66,14 +70,37 @@
       let inside='';
       if(v.altSteps?.length){inside=`<div class="visual-placeholder-steps">${v.altSteps.map((s,i)=>`<div class="visual-placeholder-step"><span>${String(i+1).padStart(2,'0')}</span><strong>${esc(s)}</strong></div>`).join('')}</div>`;}
       else if(v.altMetrics?.length){inside=`<div class="visual-placeholder-metrics">${v.altMetrics.map(([k,val])=>`<div><span>${esc(k)}</span><strong>${esc(val)}</strong></div>`).join('')}</div>`;}
-      return `<div class="fallback-context"><span class="fallback-overline">성과 지표</span>${inside}<a href="${esc(v.source)}" target="_blank" rel="noopener noreferrer">원본 그래프 열기 ↗</a></div>`;
+      return `<div class="fallback-context"><span class="fallback-overline">${v.kind==='architecture'?'구조 요약':'성과 지표'}</span>${inside}</div>`;
     }
-    const visuals=key==='projects'&&Array.isArray(item.visuals)?`<section class="visual-section" aria-label="GitHub 공개 자료"><div class="visual-intro"><div><div class="overline">ORIGINAL MATERIALS</div><h2>GitHub 공개 자료</h2><p>${item.id==='quant'?'시스템 구조도와 시장별 백테스트 그래프':'공시 데이터 기반 투자전략의 백테스트 그래프'}</p></div><a href="${esc(item.links?.[0]?.url||'#')}" target="_blank" rel="noopener noreferrer">저장소 보기 ↗</a></div>${item.id==='quant'?'<p class="visual-disclaimer">아래 수익률은 개별 전략의 과거 백테스트 사례. Walk-Forward 수치는 기간별로 선택한 전략을 이후 구간에 적용해 평가한 연평균 수익률.</p>':''}<div class="visual-grid ${item.visuals.length===1?'visual-grid--single':''}">${item.visuals.map((v,i)=>`<figure class="visual-card ${i===0&&item.id==='quant'?'visual-card--wide':''}"><div class="visual-image ${v.kind==='architecture'?'visual-image--architecture':''}"><a class="original-image-link ${v.kind==='architecture'?'is-loaded':''}" href="${esc(v.src)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(v.title)} 원본 크게 보기"><img src="${esc(v.src)}" alt="${esc(v.title)} · 원본 그림" loading="lazy"></a><div class="visual-fallback" ${v.kind==='architecture'?'hidden':''}>${visualFallback(v)}</div></div><figcaption><strong>${esc(v.title)}</strong><span>${esc(v.description)}</span><a href="${esc(v.src.startsWith('assets/')?v.src:v.source)}" target="_blank" rel="noopener noreferrer">원본 이미지 ↗</a></figcaption></figure>`).join('')}</div></section>`:'';
+    const visuals=key==='projects'&&Array.isArray(item.visuals)?`<section class="visual-section" aria-label="GitHub 공개 자료"><div class="visual-intro"><div><div class="overline">ORIGINAL MATERIALS</div><h2>GitHub 공개 자료</h2><p>${item.id==='quant'?'시스템 구조도와 시장별 백테스트 그래프':'공시 데이터 기반 투자전략의 백테스트 그래프'}</p></div><a href="${esc(item.links?.[0]?.url||'#')}" target="_blank" rel="noopener noreferrer">저장소 보기 ↗</a></div>${item.id==='quant'?'<p class="visual-disclaimer">아래 수익률은 개별 전략의 과거 백테스트 사례. Walk-Forward 수치는 기간별로 선택한 전략을 이후 구간에 적용해 평가한 연평균 수익률.</p>':''}<div class="visual-grid ${item.visuals.length===1?'visual-grid--single':''}">${item.visuals.map((v,i)=>`<figure class="visual-card ${i===0&&item.id==='quant'?'visual-card--wide':''}"><div class="visual-image ${v.kind==='architecture'?'visual-image--architecture':''}"><a class="original-image-link ${v.kind==='architecture'?'is-loaded':''}" href="${esc(v.src)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(v.title)} 원본 크게 보기"><img src="${esc(v.src)}" alt="${esc(v.title)} · 원본 그림" loading="lazy"></a><div class="visual-fallback" ${v.kind==='architecture'?'hidden':''}>${visualFallback(v)}</div></div><figcaption><strong>${esc(v.title)}</strong><span>${esc(v.description)}</span>${v.reportId?`<a class="visual-report-link" href="#/projects/quant/report/${esc(v.reportId)}">백테스트 상세 보고서 <span aria-hidden="true">→</span></a>`:`<span class="zoom-help">이미지를 클릭해 크게 보기</span>`}</figcaption></figure>`).join('')}</div></section>`:'';
     const process=key==='projects'&&item.processSteps?.length?`<section class="process-section" aria-labelledby="project-process-title"><div class="process-head"><div><div class="overline">DATA & WORKFLOW</div><h2 id="project-process-title">${esc(item.processTitle)}</h2><p>${esc(item.processSummary)}</p></div><span class="process-count">${item.processSteps.length}단계</span></div><ol class="process-grid">${item.processSteps.map(([title,description],i)=>`<li class="process-step"><span class="process-index">${String(i+1).padStart(2,'0')}</span><h3>${esc(title)}</h3><p>${esc(description)}</p></li>`).join('')}</ol></section>`:'';
     const skills=`<section class="skills-panel" aria-label="관련 기술과 경험"><h2>관련 기술 · 역량</h2><div class="skill-tags">${item.skills.map(x=>`<span>${esc(x)}</span>`).join('')}</div></section>`;
     const flow=item.flow?`<section class="flow-panel" aria-label="프로젝트 처리 흐름"><h2>${esc(item.extraTitle||'구성')}</h2><div class="flow-steps">${item.flow.map(s=>`<div class="flow-step">${esc(s)}</div>`).join('')}</div></section>`:'';
     return `${breadcrumb([{text:'홈',href:'#/'},{text:c.label,href:'#/'+key},{text:item.title}])}<header class="detail-head"><div class="detail-meta">${item.featured?'<span class="featured-detail-label">추천 · 대표 개인 프로젝트</span>':''}<span>${esc(item.date)}</span><span>${esc(item.affiliation)}</span>${item.conference?`<span>${esc(item.conference)}</span>`:''}</div><h1>${esc(item.title)}</h1><p class="detail-intro">${esc(item.intro)}</p>${key==='projects'?linkButtons(item.links):''}</header><section class="content-section" aria-label="${esc(item.title)} 주요 내용"><div class="overline">OVERVIEW</div><div class="detail-grid">${item.cards.map(contentCard).join('')}</div></section>${abstract}${process}${visuals}${skills}${item.processSteps?"":flow}`;
   }
+  function reportIndexPage(){
+  const reports=PORTFOLIO.quantReports||[];
+  const cards=reports.map((r,i)=>`<a class="report-list-card" href="#/projects/quant/report/${esc(r.id)}"><span class="report-list-no">${String(i+1).padStart(2,'0')}</span><div><h2>${esc(r.title)}</h2><p>${esc(r.subtitle)}</p><span class="report-list-meta">${esc(r.period)} · 비교 기준: ${esc(r.benchmark)}</span></div><span class="report-list-arrow" aria-hidden="true">→</span></a>`).join('');
+  return `${breadcrumb([{text:'홈',href:'#/'},{text:'개인 프로젝트',href:'#/projects'},{text:'퀀트 리서치·자동매매 시스템',href:'#/projects/quant'},{text:'백테스트 보고서'}])}<header class="page-head"><span class="eyebrow">BACKTEST & VALIDATION</span><h1>백테스트·검증 보고서</h1><p>전략별 매매 조건, 과거 성과, 통계적 검증 결과를 구분해 정리</p><div class="page-count">4개 전략 사례</div></header><section class="report-list" aria-label="전략별 백테스트 상세 보고서">${cards}</section><p class="report-index-note">수익률은 개별 전략의 과거 분석 사례이며 퀀트 시스템 전체 성과 또는 미래 수익을 나타내지 않음.</p>`;
+}
+  function reportDetailPage(id){
+  const r=(PORTFOLIO.quantReports||[]).find(x=>x.id===id);
+  if(!r)return notFound();
+  const strategy=r.strategy.map(([k,v])=>`<div class="report-definition-row"><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('');
+  const metrics=r.metrics.map(([k,a,b])=>`<tr><th scope="row">${esc(k)}</th><td>${esc(a)}</td><td>${esc(b)}</td></tr>`).join('');
+  const valid=r.validation.map(([k,v])=>`<div class="report-definition-row"><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('');
+  const source='https://github.com/Choe-Useong/quant-trading-system/blob/main/notes/strategy_examples.md#'+r.sourceAnchor;
+  return `${breadcrumb([{text:'홈',href:'#/'},{text:'개인 프로젝트',href:'#/projects'},{text:'퀀트 시스템',href:'#/projects/quant'},{text:'백테스트 보고서',href:'#/projects/quant/reports'},{text:r.title}])}
+    <article class="quant-report">
+      <header class="report-header"><span class="eyebrow">BACKTEST CASE STUDY</span><h1>${esc(r.title)}</h1><p class="report-subtitle">${esc(r.subtitle)}</p><div class="report-date">${esc(r.period)} · 비교 기준: ${esc(r.benchmark)}</div></header>
+      <section class="report-section"><h2>실험 개요</h2><p class="report-copy">${esc(r.overview)}</p></section>
+      <figure class="report-chart"><a href="${esc(r.image)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(r.title)} 그래프 크게 보기"><img src="${esc(r.image)}" alt="${esc(r.title)} 과거 성과 및 낙폭 그래프" loading="lazy"></a><figcaption>과거 백테스트 그래프 · 클릭하면 원본 크기로 보기</figcaption></figure>
+      <section class="report-section"><h2>전략 조건</h2><dl class="report-definitions">${strategy}</dl></section>
+      <section class="report-section"><h2>전체 기간 백테스트 성과</h2><div class="report-table-scroll"><table class="report-metrics"><thead><tr><th scope="col">지표</th><th scope="col">전략 사례</th><th scope="col">${esc(r.benchmark)}</th></tr></thead><tbody>${metrics}</tbody></table></div><p class="report-footnote">이 표는 전체 기간 사례의 과거 성과이며, 아래 Walk-Forward 평가 결과와 구분</p></section>
+      <section class="report-section"><h2>검증 및 해석</h2><dl class="report-definitions">${valid}</dl><p class="report-interpretation">${esc(r.interpretation)}</p></section>
+      <div class="report-end-links"><a href="#/projects/quant/reports">← 다른 전략 보고서</a><a href="${esc(source)}" target="_blank" rel="noopener noreferrer">GitHub 연구자료 확인 ↗</a></div>
+    </article>`;
+}
   function about(){
     const e=PORTFOLIO.profile.education, activities=PORTFOLIO.profile.activities.map((it,i)=>`<article class="activity-item"><div class="activity-year">${esc(it.period)}</div><div><h3>${esc(it.name)}</h3><div class="activity-type">${esc(it.kind)}</div><ul>${it.items.map(t=>`<li>${esc(t)}</li>`).join('')}</ul></div></article>`).join('');
     return `${breadcrumb([{text:'홈',href:'#/'},{text:'소개'}])}${pageHeader('ABOUT','학력 및 활동','학력 · 연구실 활동 · 동아리 활동','')}<div class="profile-layout"><section class="profile-box"><div class="overline">EDUCATION</div><h2>학력</h2><div class="education-school">${esc(e.school)}</div><div class="education-major">${esc(e.major)} · ${esc(e.doubleMajor)}</div><div class="education-gpa">학점 <strong>${esc(e.gpa)}</strong></div></section><section class="profile-box"><div class="overline">EXPERIENCE & ACTIVITIES</div><h2>학술·동아리 활동</h2><div class="activity-list">${activities}</div></section></div>`;
@@ -88,6 +115,8 @@
     else if(tokens[0]==='awards' && tokens[1]==='certifications' && tokens.length===2){navKey='awards';page=certifications();title='자격증 · 최우성';}
     else if(tokens[0]==='awards' && tokens[1]==='recognition' && tokens.length===2){navKey='awards';page=recognition();title='수상 · 최우성';}
     else if(tokens[0]==='awards' && tokens[1]==='recognition' && tokens.length===3){navKey='awards';page=detail('awards',tokens[2]);title='수상 · 최우성';}
+    else if(tokens.length===3 && tokens[0]==='projects' && tokens[1]==='quant' && tokens[2]==='reports'){navKey='projects';page=reportIndexPage();title='백테스트·검증 보고서 · 최우성';}
+    else if(tokens.length===4 && tokens[0]==='projects' && tokens[1]==='quant' && tokens[2]==='report'){navKey='projects';page=reportDetailPage(tokens[3]);title='백테스트 상세 보고서 · 최우성';}
     else if(tokens.length===2 && categories[tokens[0]] && tokens[0]!=='awards'){navKey=tokens[0];page=detail(navKey,tokens[1]);const it=categories[navKey].data.find(x=>x.id===tokens[1]);title=it?`${it.title} · 최우성`:title;}
     else {page=notFound();}
     main.innerHTML=page+bottomNavigation(tokens);main.classList.remove('page-enter');void main.offsetWidth;main.classList.add('page-enter');document.title=title;
