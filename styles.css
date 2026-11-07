@@ -218,3 +218,69 @@
 
 /* Quant architecture + four market examples: two-by-two performance cards on desktop */
 @media (min-width:851px){.visual-grid:has(> .visual-card:nth-child(5)){grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+
+/* Backtest reports: one image-zoom action and one detailed report destination. */
+.visual-card figcaption .zoom-help{font-size:11px;color:#7a8c9c}
+.visual-card figcaption .visual-report-link{
+  display:inline-flex;align-items:center;justify-content:space-between;gap:12px;
+  width:fit-content;max-width:100%;padding:10px 14px;margin-top:5px;
+  background:#eef5fb;color:#255677;border:1px solid #d4e5f2;border-radius:8px;
+  font-size:12px;font-weight:700;text-decoration:none;transition:background .15s,border-color .15s
+}
+.visual-card figcaption .visual-report-link:hover{background:#dcecf8;border-color:#9cbcd4}
+.visual-card figcaption .visual-report-link span{color:inherit;font-size:15px}
+.report-list{display:grid;gap:12px;margin-top:12px}
+.report-list-card{display:grid;grid-template-columns:50px minmax(0,1fr) 32px;gap:16px;align-items:center;
+  padding:23px 24px;background:#fff;border:1px solid #d4e0e9;border-radius:12px;text-decoration:none;transition:background .15s,border-color .15s}
+.report-list-card:hover{background:#f4f8fc;border-color:#8caec7}
+.report-list-no{align-self:start;font-size:12px;font-weight:700;color:#5682a3}
+.report-list-card h2{font-size:19px;font-weight:700;margin:0 0 6px;color:#162f43}
+.report-list-card p{font-size:13px;color:#62798b;margin:0 0 10px}
+.report-list-meta{font-size:11px;color:#738698}
+.report-list-arrow{font-size:21px;color:#3e6d8e;text-align:center}
+.report-index-note{color:#708394;font-size:12px;line-height:1.8;margin:22px 0}
+.quant-report{max-width:1000px;margin:0 auto}
+.report-header{padding:18px 0 28px}
+.report-header h1{margin:9px 0;font-size:clamp(30px,3.2vw,39px);letter-spacing:-.05em}
+.report-subtitle{margin:0 0 12px;font-size:15px;color:#496377}
+.report-date{font-size:12px;color:#8093a2}
+.report-section{border-top:1px solid #dce5ed;padding:27px 0 28px}
+.report-section h2{margin:0 0 15px;color:#1b384f;font-size:20px;letter-spacing:-.035em}
+.report-copy{margin:0;font-size:14px;color:#516778;line-height:1.9;word-break:keep-all}
+.report-chart{margin:0 0 31px;border:1px solid #dbe6ef;border-radius:12px;overflow:hidden;background:#fff}
+.report-chart a{display:block;cursor:zoom-in}
+.report-chart img{width:100%;height:auto;display:block;object-fit:contain}
+.report-chart figcaption{border-top:1px solid #e4ebf1;padding:12px 18px;font-size:11px;color:#74899a}
+.report-definitions{margin:0;border-top:1px solid #e9eef2}
+.report-definition-row{display:grid;grid-template-columns:190px minmax(0,1fr);gap:16px;border-bottom:1px solid #e9eef2;padding:13px 5px}
+.report-definition-row dt{font-size:13px;font-weight:700;color:#355772}
+.report-definition-row dd{margin:0;font-size:13px;line-height:1.75;color:#526b7e;word-break:keep-all}
+.report-table-scroll{overflow-x:auto;border:1px solid #dce6ed;border-radius:10px}
+.report-metrics{width:100%;border-collapse:collapse;font-size:13px;min-width:420px}
+.report-metrics th,.report-metrics td{padding:14px 16px;border-bottom:1px solid #e9eef2;text-align:left}
+.report-metrics thead th{background:#eef4f9;font-weight:700;color:#3d617a}
+.report-metrics tbody th{font-weight:600;color:#4d6475}
+.report-metrics tbody td{font-weight:700;color:#244c6a;font-variant-numeric:tabular-nums}
+.report-metrics tbody tr:last-child th,.report-metrics tbody tr:last-child td{border-bottom:none}
+.report-footnote{margin:10px 0 0;font-size:11px;color:#8595a1;line-height:1.7}
+.report-interpretation{margin:17px 0 0;padding:18px 20px;border-left:3px solid #769cb7;background:#f3f7fa;color:#496378;font-size:13px;line-height:1.9;word-break:keep-all}
+.report-end-links{display:flex;flex-wrap:wrap;justify-content:space-between;gap:16px;margin:20px 0 6px}
+.report-end-links a{font-size:12px;font-weight:700;color:#2f638a;border-bottom:1px solid #b5cede}
+@media(max-width:700px){
+ .report-list-card{grid-template-columns:30px minmax(0,1fr) 22px;gap:10px;padding:19px 16px}
+ .report-list-card h2{font-size:16px}
+ .report-list-card p{font-size:12px}
+ .report-list-meta{font-size:10px}
+ .report-header{padding:7px 0 20px}
+ .report-header h1{font-size:29px}
+ .report-section{padding:22px 0}
+ .report-definition-row{grid-template-columns:1fr;gap:4px;padding:12px 3px}
+ .report-definition-row dt{font-size:12px}
+ .report-definition-row dd{font-size:12px}
+ .report-chart figcaption{padding:10px 13px}
+ .report-metrics{font-size:12px}
+ .report-metrics th,.report-metrics td{padding:12px 10px}
+ .report-interpretation{font-size:12px;padding:14px}
+}
+@media(prefers-reduced-motion:reduce){.visual-report-link,.report-list-card{transition:none}}
