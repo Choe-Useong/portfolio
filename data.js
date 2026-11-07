@@ -15,7 +15,7 @@ const PORTFOLIO = {
       visuals:[
         {title:'시스템 아키텍처',description:'데이터 준비, 투자전략 계산, 성과 검증, 주문·계좌 관리 기능의 전체 구성도',src:'assets/quant_trading_system_architecture.png',source:'https://github.com/Choe-Useong/quant-trading-system/blob/main/notes/assets/system_architecture.png',kind:'architecture',altSteps:['데이터 수집·캐시','전략 신호·선정','목표 비중 계산','검증 및 주문 관리']},
         {title:'국내 주식 백테스트 사례',description:'2016.01~2026.09 과거 분석의 연평균 수익률 30.94%(KOSPI 13.25%). 기간을 나눠 검증한 전략의 연평균 수익률 10.51%.',src:'https://raw.githubusercontent.com/Choe-Useong/quant-trading-system/main/notes/assets/kr_stock_case.png',source:'https://github.com/Choe-Useong/quant-trading-system/blob/main/notes/assets/kr_stock_case.png',kind:'chart',altMetrics:[['전략 CAGR','30.94%'],['KOSPI CAGR','13.25%'],['WF CAGR','10.51%']]},
-        {title:'미국 ETF 백테스트 사례',description:'2012.05~2026.05 과거 분석의 연평균 수익률 36.16%(원화 환산 SPY 17.08%). 기간을 나눠 검증한 전략의 연평균 수익률 33.68%.',src:'https://raw.githubusercontent.com/Choe-Useong/quant-trading-system/main/notes/assets/us_etf_case.png',source:'https://github.com/Choe-Useong/quant-trading-system/blob/main/notes/assets/us_etf_case.png',kind:'chart',altMetrics:[['전략 CAGR','36.16%'],['SPY CAGR','17.08%'],['WF CAGR','33.68%']]},
+        {title:'미국 ETF 백테스트 사례',description:'2012.05~2026.05 전체 기간 전략 CAGR 36.16%(원화 환산 SSO 26.63%). Walk-Forward 평가 구간 CAGR 32.86%(같은 기간 원화 환산 SSO 24.94%).',src:'https://raw.githubusercontent.com/Choe-Useong/quant-trading-system/main/notes/assets/us_etf_case.png',source:'https://github.com/Choe-Useong/quant-trading-system/blob/main/notes/assets/us_etf_case.png',kind:'chart',altMetrics:[['전략 CAGR','36.16%'],['SSO CAGR','26.63%'],['WF CAGR','32.86%']]},
         {title:'BTC 현물 백테스트 사례',description:'2019.09~2026.10 과거 분석의 연평균 수익률 80.03%(BTC 보유 38.90%). 기간을 나눠 검증한 전략의 연평균 수익률 35.56%.',src:'https://raw.githubusercontent.com/Choe-Useong/quant-trading-system/main/notes/assets/btc_spot_case.png',source:'https://github.com/Choe-Useong/quant-trading-system/blob/main/notes/assets/btc_spot_case.png',kind:'chart',altMetrics:[['전략 CAGR','80.03%'],['BTC 보유 CAGR','38.90%'],['WF CAGR','35.56%']]}
       ],
       processTitle:'정량 투자전략 연구·검증·운영 과정',
@@ -28,7 +28,7 @@ const PORTFOLIO = {
         ['백테스트·검증','과거 수익률·손실폭 분석과 기간 분리 검증, 통계적 방법으로 과최적화 가능성 점검'],
         ['주문·계좌 관리','실제 보유량과 목표 비중을 비교해 주문 계획, 체결 확인 및 계좌 상태 기록']
       ],
-      note:'시장별 수익률은 개별 전략의 과거 백테스트 사례 수치이며 시스템 전체 성과를 나타내지 않음'
+      note:'시장별 수익률은 개별 전략의 과거 백테스트 사례이며 시스템 전체 성과가 아님. 미국 ETF 비교 기준은 원화 환산 SSO(S&P 500 일간 2배 ETF)'
     },
     {
       id:'dart',title:'DART 재무데이터 기반 팩터투자 프레임워크',short:'기업별 공시자료 표준화, 주가 데이터 결합 및 투자지표·성과 계산',date:'2025.08 — 2025.11',affiliation:'개인 프로젝트',
