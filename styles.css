@@ -284,3 +284,7 @@
  .report-interpretation{font-size:12px;padding:14px}
 }
 @media(prefers-reduced-motion:reduce){.visual-report-link,.report-list-card{transition:none}}
+
+/* Home: concise name-only hero, education and activities remain under the top 소개 navigation. */
+.home-hero{grid-template-columns:minmax(0,1fr);gap:0;padding:83px 0 72px}
+@media(max-width:700px){.home-hero{grid-template-columns:minmax(0,1fr);gap:0;padding:62px 0 50px}}
