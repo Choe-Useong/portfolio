@@ -5,27 +5,35 @@ const PORTFOLIO = {
   {
     "id": "kr",
     "title": "국내 주식 전략",
-    "subtitle": "모멘텀·시장 확산도를 활용한 종목 선정",
+    "subtitle": "업종 내 순위 모멘텀·업종당 최대 2종목",
     "period": "2016.01.04 – 2026.09.21",
-    "benchmark": "KOSPI",
+    "benchmark": "KOSPI200",
     "image": "assets/kr_stock_case.png",
-    "overview": "KOSPI 대형주 중 상대적으로 강한 흐름을 보인 종목을 선정하고, 시장 전반의 상승 종목 비율이 낮을 때는 현금으로 전환하는 전략 실험.",
+    "overview": "KOSPI 보통주 중 전월 평균 시가총액 상위 100개를 대상으로 같은 업종 내부에서 주가 움직임의 상대 순위를 계산해 상위 5개를 선정하는 전략 실험. 업종당 최대 2개까지 편입하고 월별로 동일비중 재조정.",
     "strategy": [
       [
         "투자 대상",
-        "전월 평균 시가총액 상위 100개 KOSPI 종목"
+        "KOSPI 보통주 중 전월 평균 시가총액 상위 100개"
+      ],
+      [
+        "순위 신호",
+        "전월 말 기준 동일 업종(종목 3개 이상)에서 일별 수익률 백분위 순위를 계산, 월평균을 최근 3개월 제외 9개월 동안 합산"
+      ],
+      [
+        "사례 설정",
+        "모멘텀 12개월·최근 3개월 제외"
       ],
       [
         "종목 선정",
-        "최근 12개월에서 최근 3개월을 제외한 모멘텀 순위 상위 최대 5개"
+        "상위 5개 종목, 업종당 최대 2개"
       ],
       [
         "투자 비중",
-        "최대 5개 종목에 동일 비중, 시장 확산도 50% 이하일 때 현금"
+        "종목당 20% 동일비중, 월별 재조정"
       ],
       [
-        "조정 주기",
-        "월별"
+        "체결 제약",
+        "거래량이 없는 날 주문 연기, 상장폐지 보유분은 마지막 유효 가격으로 정산"
       ],
       [
         "거래비용 가정",
@@ -35,43 +43,51 @@ const PORTFOLIO = {
     "metrics": [
       [
         "연평균 수익률(CAGR)",
-        "30.94%",
-        "13.25%"
+        "37.61%",
+        "16.09%"
       ],
       [
         "최대낙폭(MDD)",
-        "-28.17%",
-        "-43.90%"
+        "-57.79%",
+        "-41.19%"
       ],
       [
         "샤프 비율",
-        "1.31",
-        "0.65"
+        "1.22",
+        "0.72"
       ]
     ],
     "validation": [
       [
         "후보군",
-        "모멘텀·시장 확산도 조건 16개"
+        "모멘텀 9·12·15·18개월 × 최근 제외 0·1·2·3개월 = 16개"
       ],
       [
         "SPA",
-        "p=0.0534"
+        "p=0.0246 (5,000회 재표집)"
       ],
       [
         "PBO",
-        "64.29%"
+        "19.44%"
       ],
       [
-        "Walk-Forward CAGR",
-        "10.51% (같은 평가기간 KOSPI 7.44%)"
+        "Walk-Forward (rolling)",
+        "CAGR 18.13% · 최대낙폭 -56.56%"
       ],
       [
-        "Walk-Forward 최대낙폭",
-        "-47.52%"
+        "Walk-Forward (expanding)",
+        "CAGR 21.18% · 최대낙폭 -50.31%"
+      ],
+      [
+        "Walk-Forward 벤치마크",
+        "동일 평가기간 KOSPI200 CAGR 8.52% · 최대낙폭 -41.05%"
+      ],
+      [
+        "OOS 평가기간",
+        "2018.01.04 – 2026.01.02"
       ]
     ],
-    "interpretation": "전체 기간에 선정한 고정 전략의 백테스트 수치와 기간별로 후보를 선택한 Walk-Forward 수치는 서로 다른 평가 방식. Walk-Forward의 위험 지표와 PBO 결과도 함께 확인할 필요.",
+    "interpretation": "전체 기간 고정 전략과 Walk-Forward는 후보 선택·평가 방식이 다른 수치. 전체 기간 CAGR은 KOSPI200보다 21.52%p 높았지만 최대낙폭은 16.60%p 컸음. 특정 종목에 대한 수익 기여 집중도도 함께 고려할 필요가 있음(SK하이닉스·SK스퀘어·삼성전자 순손익 45.6%). 후보군은 다른 접근법을 비교한 뒤 구성했으므로 검증 수치를 무조건적인 미래 성과의 증거로 해석할 수 없음.",
     "sourceAnchor": "3-국내-주식-사례"
   },
   {
@@ -300,7 +316,7 @@ const PORTFOLIO = {
       links:[{label:'GitHub 저장소',url:'https://github.com/Choe-Useong/quant-trading-system'},{label:'백테스트·검증 보고서',url:'#/projects/quant/reports'}],
       visuals:[
         {title:'시스템 아키텍처',description:'데이터 준비, 투자전략 계산, 성과 검증, 주문·계좌 관리 기능의 전체 구성도',src:'https://raw.githubusercontent.com/Choe-Useong/quant-trading-system/main/notes/assets/system_architecture.png',source:'https://github.com/Choe-Useong/quant-trading-system/blob/main/notes/assets/system_architecture.png',kind:'architecture',altSteps:['데이터 수집·캐시','전략 신호·선정','목표 비중 계산','검증 및 주문 관리']},
-        {title:'국내 주식 백테스트 사례',description:'2016.01~2026.09 과거 분석의 연평균 수익률 30.94%(KOSPI 13.25%). 기간을 나눠 검증한 전략의 연평균 수익률 10.51%.',src:'assets/kr_stock_case.png',source:'https://github.com/Choe-Useong/quant-trading-system/blob/main/notes/assets/kr_stock_case.png',reportId:'kr',kind:'chart',altMetrics:[['전략 CAGR','30.94%'],['KOSPI CAGR','13.25%'],['WF CAGR','10.51%']]},
+        {title:'국내 주식 백테스트 사례',description:'2016.01~2026.09 업종 내 순위 모멘텀 전략의 전체 기간 CAGR 37.61%(KOSPI200 16.09%), 최대낙폭 -57.79%. Walk-Forward CAGR은 rolling 18.13%, expanding 21.18%(동일 평가기간 KOSPI200 8.52%).',src:'assets/kr_stock_case.png',source:'https://github.com/Choe-Useong/quant-trading-system/blob/main/notes/assets/kr_stock_case.png',reportId:'kr',kind:'chart',altMetrics:[['전략 CAGR','37.61%'],['KOSPI200 CAGR','16.09%'],['WF rolling','18.13%'],['WF expanding','21.18%']]},
         {title:'미국 ETF 백테스트 사례',description:'2012.05~2026.05 전체 기간 전략 CAGR 36.16%(원화 환산 SSO 26.63%). Walk-Forward 평가 구간 CAGR 32.86%(같은 기간 원화 환산 SSO 24.94%).',src:'assets/us_etf_case.png',source:'https://github.com/Choe-Useong/quant-trading-system/blob/main/notes/assets/us_etf_case.png',reportId:'us',kind:'chart',altMetrics:[['전략 CAGR','36.16%'],['SSO CAGR','26.63%'],['WF CAGR','32.86%']]},
         {title:'BTC 현물 백테스트 사례',description:'2019.09~2026.10 과거 분석의 연평균 수익률 80.03%(BTC 보유 38.90%). 기간을 나눠 검증한 전략의 연평균 수익률 35.56%.',src:'assets/btc_spot_case.png',source:'https://github.com/Choe-Useong/quant-trading-system/blob/main/notes/assets/btc_spot_case.png',reportId:'btc',kind:'chart',altMetrics:[['전략 CAGR','80.03%'],['BTC 보유 CAGR','38.90%'],['WF CAGR','35.56%']]},
         {title:'알트코인 선물 롱·숏 백테스트 사례',description:'2020.01~2026.10, 거래대금과 최근 수익률로 구분한 9개 그룹의 롱·숏 72개 조합을 비교. 누적수익률 1위 조합의 CAGR 40.88%, 최대낙폭 -35.05%. 비교 기준 BTC 보유 CAGR 42.55%.',src:'assets/alt_futures_case_preview.png',source:'https://github.com/Choe-Useong/quant-trading-system/blob/main/notes/assets/alt_futures_case_preview.png',reportId:'futures',kind:'chart',altMetrics:[['사례 CAGR','40.88%'],['BTC 보유 CAGR','42.55%'],['최대낙폭','-35.05%']]}
