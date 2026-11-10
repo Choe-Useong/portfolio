@@ -288,3 +288,47 @@
 /* Home: concise name-only hero, education and activities remain under the top 소개 navigation. */
 .home-hero{grid-template-columns:minmax(0,1fr);gap:0;padding:83px 0 72px}
 @media(max-width:700px){.home-hero{grid-template-columns:minmax(0,1fr);gap:0;padding:62px 0 50px}}
+
+
+/* Concise strategy reports: scannable evidence-first layout. */
+.quant-report--compact{max-width:1060px}
+.quant-report--compact .report-header{padding:6px 0 24px}
+.report-section-eyebrow{font-size:11px;letter-spacing:.03em;font-weight:750;color:#55748c;margin-bottom:14px}
+.report-highlight{padding:22px;border:1px solid #d6e1ea;border-radius:13px;background:#fff;margin:0 0 22px}
+.report-kpi-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.report-kpi{display:grid;align-content:start;gap:8px;min-width:0;padding:19px 17px;border-radius:10px;background:#f3f7fa;border:1px solid #e6ecf1}
+.report-kpi-label{color:#5d7181;font-size:12px;line-height:1.5;font-weight:650}
+.report-kpi strong{font-size:clamp(25px,2.8vw,34px);line-height:1.2;color:#183e59;letter-spacing:-.045em;font-variant-numeric:tabular-nums;white-space:nowrap}
+.report-kpi-benchmark{font-size:11px;line-height:1.55;color:#718493;overflow-wrap:anywhere}
+.quant-report--compact .report-chart{margin-bottom:25px}
+.report-compact-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:16px;align-items:start}
+.report-compact-panel{min-width:0;padding:22px 23px;background:#fff;border:1px solid #d8e3eb;border-radius:12px}
+.report-compact-panel h2{font-size:17px;letter-spacing:-.045em;color:#1f435b;margin:0 0 14px}
+.report-compact-definitions{margin:0}
+.report-compact-row{display:grid;grid-template-columns:104px minmax(0,1fr);gap:12px;padding:12px 1px;border-bottom:1px solid #e9eff3;align-items:start}
+.report-compact-row:first-child{padding-top:0}
+.report-compact-row:last-child{border-bottom:0;padding-bottom:0}
+.report-compact-row dt{font-size:12px;color:#375c78;font-weight:700;line-height:1.65;word-break:keep-all}
+.report-compact-row dd{margin:0;font-size:12px;line-height:1.73;color:#526b7f;word-break:keep-all;overflow-wrap:break-word}
+.report-oos-period{margin:15px 0 0;color:#748696;font-size:11px;line-height:1.7}
+.report-key-point{margin-top:18px;padding:19px 23px;border-left:3px solid #6184a0;background:#edf3f8;border-radius:0 10px 10px 0}
+.report-key-point h2{font-size:13px;color:#305672;margin:0 0 8px;font-weight:750}
+.report-key-point p{font-size:13px;line-height:1.9;color:#3c596e;margin:0;word-break:keep-all}
+.report-summary-note{font-size:11px;line-height:1.8;color:#7b8c98;margin:16px 0 6px}
+.quant-report--compact .report-end-links{margin-top:22px;padding-top:16px;border-top:1px solid #e0e8ee}
+@media(max-width:850px){
+  .report-compact-grid{grid-template-columns:1fr}
+  .report-kpi strong{font-size:26px}
+}
+@media(max-width:560px){
+  .report-highlight{padding:12px}
+  .report-kpi-grid{grid-template-columns:1fr;gap:8px}
+  .report-kpi{grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:4px 10px;padding:14px}
+  .report-kpi-label{grid-column:1;grid-row:1;font-size:11px}
+  .report-kpi strong{grid-column:2;grid-row:1 / 3;font-size:25px}
+  .report-kpi-benchmark{grid-column:1;grid-row:2;font-size:11px}
+  .report-compact-panel{padding:19px 16px}
+  .report-compact-row{grid-template-columns:94px minmax(0,1fr);gap:9px}
+  .report-key-point{padding:16px 18px}
+  .report-key-point p{font-size:12px}
+}
