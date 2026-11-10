@@ -95,7 +95,7 @@
     <article class="quant-report quant-report--compact">
       <header class="report-header"><span class="eyebrow">STRATEGY SUMMARY</span><h1>${esc(r.title)}</h1><p class="report-subtitle">${esc(r.subtitle)}</p><div class="report-date">${esc(r.period)} · 비교 기준: ${esc(r.benchmark)}</div></header>
       <section class="report-highlight" aria-label="전체 기간 고정 사례 백테스트 성과">
-        <div class="report-section-eyebrow">전체 기간 백테스트 · 고정 사례</div>
+        <div class="report-section-eyebrow">${r.id==='futures'?'전체 기간 백테스트 · 사후 선정 1위 조합':'전체 기간 백테스트 · 고정 사례'}</div>
         <div class="report-kpi-grid">${kpis}</div>
       </section>
       <figure class="report-chart"><a href="${esc(r.image)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(r.title)} 그래프 크게 보기"><img src="${esc(r.image)}" alt="${esc(r.title)} 과거 성과 및 낙폭 그래프" loading="lazy"></a><figcaption>과거 백테스트 성과 및 낙폭 · 이미지를 클릭하면 크게 볼 수 있음</figcaption></figure>
@@ -104,7 +104,7 @@
         <section class="report-compact-panel" aria-labelledby="report-validation-heading"><h2 id="report-validation-heading">검증 결과</h2><dl class="report-compact-definitions">${validation}</dl>${s.oos?`<p class="report-oos-period">Walk-Forward 평가기간: ${esc(s.oos)}</p>`:`<p class="report-oos-period">별도 표본 외 검증을 수행하지 않은 사례</p>`}</section>
       </div>
       <section class="report-key-point" aria-labelledby="report-key-point-title"><h2 id="report-key-point-title">핵심 해석</h2><p>${esc(s.takeaway)}</p></section>
-      <p class="report-summary-note">전체 기간에 선정한 고정 사례의 수치와 Walk-Forward 성과는 서로 다른 평가 방식이며, 과거 성과는 미래 수익을 보장하지 않음.</p>
+      <p class="report-summary-note">과거 백테스트 사례이며 현재 실계좌 성과나 미래 수익을 의미하지 않음.</p>
       <nav class="report-end-links" aria-label="보고서 이동"><a href="#/projects/quant/reports">← 다른 전략 보기</a><a href="${esc(source)}" target="_blank" rel="noopener noreferrer">GitHub 원본 · 상세 가정 확인 ↗</a></nav>
     </article>`;
 }
