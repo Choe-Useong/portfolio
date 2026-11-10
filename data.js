@@ -88,55 +88,7 @@ const PORTFOLIO = {
       ]
     ],
     "interpretation": "전체 기간 고정 전략과 Walk-Forward는 후보 선택·평가 방식이 다른 수치. 전체 기간 CAGR은 KOSPI200보다 21.52%p 높았지만 최대낙폭은 16.60%p 컸음. 특정 종목에 대한 수익 기여 집중도도 함께 고려할 필요가 있음(SK하이닉스·SK스퀘어·삼성전자 순손익 45.6%). 후보군은 다른 접근법을 비교한 뒤 구성했으므로 검증 수치를 무조건적인 미래 성과의 증거로 해석할 수 없음.",
-    "sourceAnchor": "3-국내-주식-사례",
-    "summary": {
-      "strategy": [
-        [
-          "대상",
-          "KOSPI 보통주 · 전월 평균 시총 상위 100개"
-        ],
-        [
-          "선정 신호",
-          "업종 내 일별 수익률 백분위 순위를 월평균으로 집계 · 모멘텀 12개월 중 최근 3개월 제외"
-        ],
-        [
-          "포트폴리오",
-          "상위 5개 · 업종당 최대 2개 · 동일비중 20%"
-        ],
-        [
-          "조정",
-          "월별"
-        ],
-        [
-          "거래비용",
-          "수수료 0.15% · 슬리피지 0.10%"
-        ]
-      ],
-      "validation": [
-        [
-          "SPA (16개 후보)",
-          "p=0.0246"
-        ],
-        [
-          "PBO",
-          "19.44%"
-        ],
-        [
-          "WF Rolling",
-          "CAGR 18.13% · MDD -56.56%"
-        ],
-        [
-          "WF Expanding",
-          "CAGR 21.18% · MDD -50.31%"
-        ],
-        [
-          "WF 동일기간 KOSPI200",
-          "CAGR 8.52% · MDD -41.05%"
-        ]
-      ],
-      "oos": "2018.01.04 – 2026.01.02",
-      "takeaway": "전체 기간 CAGR은 KOSPI200보다 21.52%p 높지만 최대낙폭도 16.60%p 큼. SPA·PBO는 최종 16개 후보군에 대한 검증으로, 이전 전략 탐색 전체를 검정한 결과는 아님."
-    }
+    "sourceAnchor": "3-국내-주식-사례"
   },
   {
     "id": "us",
@@ -208,51 +160,7 @@ const PORTFOLIO = {
       ]
     ],
     "interpretation": "고정 사례의 성과는 전체 기간 분석 결과이고, Walk-Forward CAGR은 별도 평가 구간의 결과. SPA p값 0.2508로 SSO 대비 초과성과의 통계적 유의성은 확인되지 않음.",
-    "sourceAnchor": "4-미국-etf-사례",
-    "summary": {
-      "strategy": [
-        [
-          "대상",
-          "미국 1배·2배 ETF 33개"
-        ],
-        [
-          "선정 신호",
-          "순위 모멘텀 · 절대수익률 · 상승월 수 · 추세 지속성 · 변동성 제한"
-        ],
-        [
-          "포트폴리오",
-          "조건 충족 상위 최대 2개 · 동일비중"
-        ],
-        [
-          "조정",
-          "선정 종목 변경 시"
-        ],
-        [
-          "거래비용",
-          "수수료 0.05% · 슬리피지 0%"
-        ]
-      ],
-      "validation": [
-        [
-          "SPA (9개 후보)",
-          "p=0.2508"
-        ],
-        [
-          "PBO",
-          "10.00%"
-        ],
-        [
-          "WF Rolling",
-          "CAGR 32.86% · MDD -32.15%"
-        ],
-        [
-          "WF 동일기간 SSO",
-          "CAGR 24.94% · MDD -56.74%"
-        ]
-      ],
-      "oos": "2014.05.01 – 2026.04.30",
-      "takeaway": "전체 기간 전략 성과와 Walk-Forward는 별도 평가임. SPA p=0.2508로 원화 환산 SSO 대비 초과성과의 통계적 유의성은 확인되지 않음."
-    }
+    "sourceAnchor": "4-미국-etf-사례"
   },
   {
     "id": "btc",
@@ -324,51 +232,7 @@ const PORTFOLIO = {
       ]
     ],
     "interpretation": "전체 기간 고정 사례 수치와 Walk-Forward 수치는 평가 구간과 후보 선택 방식이 다름. SPA p값 0.2627로 BTC 보유 대비 초과성과의 통계적 유의성은 확인되지 않음.",
-    "sourceAnchor": "5-btc-사례",
-    "summary": {
-      "strategy": [
-        [
-          "대상",
-          "KRW-BTC 현물 · 1시간봉"
-        ],
-        [
-          "추세 신호",
-          "10시간 SMA > 120시간 SMA"
-        ],
-        [
-          "변동성 조건",
-          "최근 240시간 변동성이 약 2년 자기 분포의 95백분위 이하"
-        ],
-        [
-          "비중·실행",
-          "조건 충족 시 BTC 100%, 아니면 현금 · 다음 시간봉 시가 반영"
-        ],
-        [
-          "거래비용",
-          "수수료 0.05% · 슬리피지 0%"
-        ]
-      ],
-      "validation": [
-        [
-          "SPA (27개 후보)",
-          "p=0.2627"
-        ],
-        [
-          "PBO",
-          "32.99%"
-        ],
-        [
-          "WF Rolling",
-          "CAGR 35.56% · MDD -36.28%"
-        ],
-        [
-          "WF 동일기간 BTC",
-          "CAGR 17.47% · MDD -74.85%"
-        ]
-      ],
-      "oos": "2021.09.25 – 2026.09.25",
-      "takeaway": "전체 기간 고정 전략과 Walk-Forward는 구간과 선택 방식이 다름. SPA p=0.2627로 BTC 단순 보유 대비 초과성과의 통계적 유의성은 확인되지 않음."
-    }
+    "sourceAnchor": "5-btc-사례"
   },
   {
     "id": "futures",
@@ -436,47 +300,7 @@ const PORTFOLIO = {
       ]
     ],
     "interpretation": "1위 조합은 전체 기간 결과를 보고 선정했으므로 독립적인 표본 외 검증 성과로 해석할 수 없음. BTC 보유는 거래비용·펀딩을 제외한 가격 수익률.",
-    "sourceAnchor": "6-알트코인-선물-거래대금주간-수익률-그룹-비교",
-    "summary": {
-      "strategy": [
-        [
-          "대상",
-          "BTC 제외 바이낸스 USDT 무기한 선물 · 1시간봉"
-        ],
-        [
-          "그룹",
-          "최근 7일 거래대금 × 7일 수익률을 각 3분위로 분류 · 9개 그룹"
-        ],
-        [
-          "비교",
-          "서로 다른 롱·숏 그룹 72개 조합 · 결과 상위 사례"
-        ],
-        [
-          "비중·조정",
-          "롱 50% + 숏 50% · 주 1회 재조정"
-        ],
-        [
-          "비용·위험",
-          "수수료 0.05% · 슬리피지 0.02% · 펀딩·청산 고려"
-        ]
-      ],
-      "validation": [
-        [
-          "전체 조합",
-          "72개 중 누적수익률 양수 22개"
-        ],
-        [
-          "선정 기준",
-          "전체 기간 누적수익률 1위 조합"
-        ],
-        [
-          "SPA · PBO · WF",
-          "미실시 (독립적 표본 외 검증 결과 없음)"
-        ]
-      ],
-      "oos": null,
-      "takeaway": "전체 기간 결과를 확인한 뒤 1위 조합을 선택했으므로 성과를 독립적인 표본 외 검증 결과로 해석할 수 없음. 비교 대상 BTC 가격 보유는 비용·펀딩 미차감."
-    }
+    "sourceAnchor": "6-알트코인-선물-거래대금주간-수익률-그룹-비교"
   }
 ],
   projects: [
@@ -489,7 +313,7 @@ const PORTFOLIO = {
         {heading:'구현 결과', items:[['전략 연구·백테스트 환경','종목 선정·비중 계산부터 여러 조건의 백테스트와 성과 비교까지 수행하는 시스템 구축'],['통계적 검증 기능','Walk-Forward·PBO·SPA·StepM 검증과 분석 결과 저장·조회 기능 구현'],['자동매매 운영 기능','주문 계획·제출, 체결 확인, 계좌 상태 기록, 중복 주문 방지 및 알림 기능 구현']]}
       ],
       skills:['Python','금융 데이터 처리','백테스트','통계적 검증','투자전략 구현','주문·계좌 관리'],
-      links:[{label:'GitHub 저장소',url:'https://github.com/Choe-Useong/quant-trading-system'},{label:'백테스트·검증 요약',url:'#/projects/quant/reports'}],
+      links:[{label:'GitHub 저장소',url:'https://github.com/Choe-Useong/quant-trading-system'},{label:'백테스트·검증 보고서',url:'#/projects/quant/reports'}],
       visuals:[
         {title:'시스템 아키텍처',description:'데이터 준비, 투자전략 계산, 성과 검증, 주문·계좌 관리 기능의 전체 구성도',src:'https://raw.githubusercontent.com/Choe-Useong/quant-trading-system/main/notes/assets/system_architecture.png',source:'https://github.com/Choe-Useong/quant-trading-system/blob/main/notes/assets/system_architecture.png',kind:'architecture',altSteps:['데이터 수집·캐시','전략 신호·선정','목표 비중 계산','검증 및 주문 관리']},
         {title:'국내 주식 백테스트 사례',description:'2016.01~2026.09 업종 내 순위 모멘텀 전략의 전체 기간 CAGR 37.61%(KOSPI200 16.09%), 최대낙폭 -57.79%. Walk-Forward CAGR은 rolling 18.13%, expanding 21.18%(동일 평가기간 KOSPI200 8.52%).',src:'assets/kr_stock_case.png',source:'https://github.com/Choe-Useong/quant-trading-system/blob/main/notes/assets/kr_stock_case.png',reportId:'kr',kind:'chart',altMetrics:[['전략 CAGR','37.61%'],['KOSPI200 CAGR','16.09%'],['WF rolling','18.13%'],['WF expanding','21.18%']]},
