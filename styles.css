@@ -288,3 +288,25 @@
 /* Home: concise name-only hero, education and activities remain under the top 소개 navigation. */
 .home-hero{grid-template-columns:minmax(0,1fr);gap:0;padding:83px 0 72px}
 @media(max-width:700px){.home-hero{grid-template-columns:minmax(0,1fr);gap:0;padding:62px 0 50px}}
+
+/* Quant report detail: equal chart/metrics columns without nested inset boxes. */
+.report-performance-layout{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);align-items:start;background:#fff;border:1px solid #dbe6ef;border-radius:12px;overflow:hidden}
+.report-performance-layout .report-chart{border:0;border-radius:0;margin:0;min-width:0}
+.report-performance-layout .report-chart a{display:block}
+.report-performance-layout .report-chart img{display:block;width:100%;height:auto;object-fit:contain}
+.report-performance-metrics{min-width:0;border-left:1px solid #e4ebf1}
+.report-performance-metrics .report-table-scroll{border:0;border-radius:0;overflow-x:auto}
+.report-performance-metrics .report-metrics{min-width:0;width:100%;font-size:12px}
+.report-performance-metrics .report-metrics th,.report-performance-metrics .report-metrics td{padding:12px 10px}
+.report-performance-layout .report-compact-definitions{min-width:0;border:0;border-left:1px solid #e4ebf1;padding:7px 15px}
+.report-performance-layout .report-compact-definitions .report-definition-row{grid-template-columns:112px minmax(0,1fr);gap:10px;padding:10px 1px}
+@media(max-width:860px){
+ .report-performance-layout{grid-template-columns:minmax(0,1fr)}
+ .report-performance-metrics,.report-performance-layout .report-compact-definitions{border-left:0;border-top:1px solid #e4ebf1}
+ .report-performance-metrics .report-metrics{font-size:12px}
+ .report-performance-layout .report-compact-definitions .report-definition-row{grid-template-columns:130px minmax(0,1fr)}
+}
+@media(max-width:480px){
+ .report-performance-layout .report-compact-definitions .report-definition-row{grid-template-columns:1fr;gap:4px}
+ .report-performance-metrics .report-metrics th,.report-performance-metrics .report-metrics td{padding:10px 8px}
+}
