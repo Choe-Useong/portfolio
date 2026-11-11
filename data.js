@@ -87,8 +87,8 @@ const PORTFOLIO = {
         "2018.01.04 – 2026.01.02"
       ]
     ],
-    "interpretation": "순손익의 45.6%가 SK하이닉스·SK스퀘어·삼성전자에 집중.",
-    "sourceAnchor": "strategy-kr-stock"
+    "interpretation": "전체 기간 고정 전략과 Walk-Forward는 후보 선택·평가 방식이 다른 수치. 전체 기간 CAGR은 KOSPI200보다 21.52%p 높았지만 최대낙폭은 16.60%p 컸음. 특정 종목에 대한 수익 기여 집중도도 함께 고려할 필요가 있음(SK하이닉스·SK스퀘어·삼성전자 순손익 45.6%). 후보군은 다른 접근법을 비교한 뒤 구성했으므로 검증 수치를 무조건적인 미래 성과의 증거로 해석할 수 없음.",
+    "sourceAnchor": "3-국내-주식-사례"
   },
   {
     "id": "us",
@@ -159,8 +159,8 @@ const PORTFOLIO = {
         "-32.15%"
       ]
     ],
-    "interpretation": "SPA p=0.2508로 SSO 대비 초과성과의 통계적 유의성은 확인되지 않음.",
-    "sourceAnchor": "strategy-us-etf"
+    "interpretation": "고정 사례의 성과는 전체 기간 분석 결과이고, Walk-Forward CAGR은 별도 평가 구간의 결과. SPA p값 0.2508로 SSO 대비 초과성과의 통계적 유의성은 확인되지 않음.",
+    "sourceAnchor": "4-미국-etf-사례"
   },
   {
     "id": "btc",
@@ -231,8 +231,8 @@ const PORTFOLIO = {
         "-36.28%"
       ]
     ],
-    "interpretation": "SPA p=0.2627로 BTC 보유 대비 초과성과의 통계적 유의성은 확인되지 않음.",
-    "sourceAnchor": "strategy-btc-spot"
+    "interpretation": "전체 기간 고정 사례 수치와 Walk-Forward 수치는 평가 구간과 후보 선택 방식이 다름. SPA p값 0.2627로 BTC 보유 대비 초과성과의 통계적 유의성은 확인되지 않음.",
+    "sourceAnchor": "5-btc-사례"
   },
   {
     "id": "futures",
@@ -241,15 +241,6 @@ const PORTFOLIO = {
     "period": "2020.01.01 – 2026.10.27",
     "benchmark": "BTC 가격 보유",
     "image": "assets/alt_futures_case_preview.png",
-    "detailImage": "https://raw.githubusercontent.com/Choe-Useong/quant-trading-system/main/notes/assets/alt_ls9_72_top5_index.png",
-    "heatmap": "https://raw.githubusercontent.com/Choe-Useong/quant-trading-system/main/notes/assets/alt_ls9_72_cagr_heatmap.png",
-    "combinationFacts": [
-      ["조합 분포", "72개 중 누적수익률 양수 22개"],
-      ["공통 숏 그룹", "거래대금 상위·수익률 하위 · 상위 5개 조합 모두 동일"],
-      ["1위 누적수익률", "938.12%"],
-      ["연도별 특성", "2021년 +219.25% · 2022년 +9.29% · 2025년 +6.89%"],
-      ["종목 집중", "DOGE·OMG의 순손익 비중 13.57%"]
-    ],
     "overview": "BTC를 제외한 USDT 무기한 선물을 거래대금과 최근 수익률에 따라 9개 그룹으로 분류하고, 다른 두 그룹을 롱·숏으로 배정한 72개 조합을 비교한 실험.",
     "strategy": [
       [
@@ -308,8 +299,8 @@ const PORTFOLIO = {
         "전체 기간 결과를 확인한 후 상위 조합 선정"
       ]
     ],
-    "interpretation": "1위 조합은 전체 기간 누적수익률을 기준으로 사후 선정했으며, BTC 비교는 가격 보유 수익률임.",
-    "sourceAnchor": "strategy-alt-futures"
+    "interpretation": "1위 조합은 전체 기간 결과를 보고 선정했으므로 독립적인 표본 외 검증 성과로 해석할 수 없음. BTC 보유는 거래비용·펀딩을 제외한 가격 수익률.",
+    "sourceAnchor": "6-알트코인-선물-거래대금주간-수익률-그룹-비교"
   }
 ],
   projects: [
@@ -340,7 +331,7 @@ const PORTFOLIO = {
         ['백테스트·검증','과거 수익률·손실폭 분석과 기간 분리 검증, 통계적 방법으로 과최적화 가능성 점검'],
         ['주문·계좌 관리','실제 보유량과 목표 비중을 비교해 주문 계획, 체결 확인 및 계좌 상태 기록']
       ],
-      note:'공개 자료는 전략 연구·백테스트 사례이며 실제 운용 설정이나 계좌 정보는 포함하지 않음. 시장별 성과는 개별 전략의 과거 분석 결과.'
+      note:'시장별 수익률은 개별 전략의 과거 백테스트 사례이며 시스템 전체 성과가 아님. 미국 ETF 비교 기준은 원화 환산 SSO(S&P 500 일간 2배 ETF). 알트코인 선물은 72개 롱·숏 조합의 누적수익률 1위 사례이며, 다른 3개 시장과 달리 Walk-Forward 검증 수치를 표시하지 않음'
     },
     {
       id:'dart',title:'DART 재무데이터 기반 팩터투자 프레임워크',short:'기업별 공시자료 표준화, 주가 데이터 결합 및 투자지표·성과 계산',date:'2025.08 — 2025.11',affiliation:'개인 프로젝트',
