@@ -171,8 +171,16 @@ const PORTFOLIO = {
         "7.50% (SPY 대비 AIR)"
       ],
       [
+        "Walk-Forward 설정",
+        "IS 24개월(Rolling 이동, Expanding 시작 고정) · STEP/OOS 각 24개월 · 6개 적용 구간"
+      ],
+      [
         "Walk-Forward (rolling)",
         "CAGR 23.82% · 최대낙폭 -23.55%"
+      ],
+      [
+        "Walk-Forward (expanding)",
+        "CAGR 19.09% · 최대낙폭 -24.82%"
       ],
       [
         "Walk-Forward 벤치마크",
@@ -183,7 +191,7 @@ const PORTFOLIO = {
         "2014.05.01 – 2026.04.30"
       ]
     ],
-    "interpretation": "전체 기간 고정 전략과 Walk-Forward는 평가 기간과 후보 선정 방식이 다름. SPA p값 0.2302로 SPY 대비 초과성과의 통계적 유의성은 확인되지 않았으며, 36개 후보 중 SPY 대비 정보비율이 양수인 후보는 18개. SPY는 수정주가를 환율로 원화 환산한 비교 기준이며 별도 거래 수수료는 반영하지 않음.",
+    "interpretation": "전체 기간 고정 전략과 Walk-Forward는 평가 기간과 후보 선정 방식이 다름. OOS CAGR은 Rolling 23.82%, Expanding 19.09%로 동일 평가기간 SPY 17.17%와 구분해 비교해야 함. SPA p값 0.2302로 SPY 대비 초과성과의 통계적 유의성은 확인되지 않았고, 36개 후보 중 정보비율이 양수인 후보는 18개. SPY 수정주가를 환율로 원화 환산했으며 SPY 매수·보유에는 별도 거래 수수료를 반영하지 않음.",
     "sourceAnchor": "strategy-us-etf"
   },
   {
@@ -247,15 +255,27 @@ const PORTFOLIO = {
         "32.99%"
       ],
       [
-        "Walk-Forward CAGR",
-        "35.56% (같은 평가기간 BTC 17.47%)"
+        "Walk-Forward 설정",
+        "IS 24개월(Rolling 이동, Expanding 시작 고정) · STEP/OOS 각 12개월 · 5개 적용 구간"
       ],
       [
-        "Walk-Forward 최대낙폭",
-        "-36.28%"
+        "Walk-Forward (rolling)",
+        "CAGR 35.56% · 최대낙폭 -36.28%"
+      ],
+      [
+        "Walk-Forward (expanding)",
+        "CAGR 40.75% · 최대낙폭 -36.28%"
+      ],
+      [
+        "Walk-Forward 벤치마크",
+        "동일 평가기간 BTC 보유 CAGR 17.47% · 최대낙폭 -74.85%"
+      ],
+      [
+        "OOS 평가기간",
+        "2021.09.25 03:00 – 2026.09.25 02:00 UTC"
       ]
     ],
-    "interpretation": "전체 기간 고정 사례 수치와 Walk-Forward 수치는 평가 구간과 후보 선택 방식이 다름. SPA p값 0.2627로 BTC 보유 대비 초과성과의 통계적 유의성은 확인되지 않음.",
+    "interpretation": "전체 기간 고정 사례와 Walk-Forward는 평가 기간과 후보 선택 방식이 다름. OOS CAGR은 Rolling 35.56%, Expanding 40.75%로 동일 기간 BTC 보유 17.47%와 구분해 비교해야 함. SPA p값 0.2627로 BTC 보유 대비 초과성과의 통계적 유의성은 확인되지 않음.",
     "sourceAnchor": "strategy-btc-spot"
   },
   {
@@ -341,9 +361,9 @@ const PORTFOLIO = {
       visuals:[
         {title:'시스템 아키텍처',description:'데이터 준비, 투자전략 계산, 성과 검증, 주문·계좌 관리 기능의 전체 구성도',src:'https://raw.githubusercontent.com/Choe-Useong/quant-trading-system/main/notes/assets/system_architecture.png',source:'https://github.com/Choe-Useong/quant-trading-system/blob/main/notes/assets/system_architecture.png',kind:'architecture',altSteps:['데이터 수집·캐시','전략 신호·선정','목표 비중 계산','검증 및 주문 관리']},
         {title:'국내 주식 백테스트 사례',description:'2016.01~2026.09 업종 내 순위 모멘텀 전략의 전체 기간 CAGR 37.61%(KOSPI200 16.09%), 최대낙폭 -57.79%. Walk-Forward CAGR은 rolling 18.13%, expanding 21.18%(동일 평가기간 KOSPI200 8.52%).',src:'assets/kr_stock_case.png',source:'https://github.com/Choe-Useong/quant-trading-system/blob/main/notes/assets/kr_stock_case.png',reportId:'kr',kind:'chart',altMetrics:[['전략 CAGR','37.61%'],['KOSPI200 CAGR','16.09%'],['WF rolling','18.13%'],['WF expanding','21.18%']]},
-        {title:'미국 ETF 백테스트 사례',description:'2012.05~2026.05 미국 1배 ETF 17개를 대상으로 한 전략의 전체 기간 CAGR 21.52%(원화 환산 SPY 17.08%), 최대낙폭 -21.82%. Walk-Forward Rolling 평가기간 CAGR 23.82%(동일기간 원화 환산 SPY 17.17%).',src:'assets/us_etf_case.png',source:'https://github.com/Choe-Useong/quant-trading-system/blob/main/notes/assets/us_etf_case.png',reportId:'us',kind:'chart',altMetrics:[['전략 CAGR','21.52%'],['SPY CAGR','17.08%'],['WF Rolling','23.82%'],['WF 기간 SPY','17.17%']]},
-        {title:'BTC 현물 백테스트 사례',description:'2019.09~2026.10 과거 분석의 연평균 수익률 80.03%(BTC 보유 38.90%). 기간을 나눠 검증한 전략의 연평균 수익률 35.56%.',src:'assets/btc_spot_case.png',source:'https://github.com/Choe-Useong/quant-trading-system/blob/main/notes/assets/btc_spot_case.png',reportId:'btc',kind:'chart',altMetrics:[['전략 CAGR','80.03%'],['BTC 보유 CAGR','38.90%'],['WF CAGR','35.56%']]},
-        {title:'알트코인 선물 롱·숏 백테스트 사례',description:'2020.01~2026.10, 거래대금과 최근 수익률로 구분한 9개 그룹의 롱·숏 72개 조합을 비교. 누적수익률 1위 조합의 CAGR 40.88%, 최대낙폭 -35.05%. 비교 기준 BTC 보유 CAGR 42.55%.',src:'assets/alt_futures_case_preview.png',source:'https://github.com/Choe-Useong/quant-trading-system/blob/main/notes/assets/alt_futures_case_preview.png',reportId:'futures',kind:'chart',altMetrics:[['사례 CAGR','40.88%'],['BTC 보유 CAGR','42.55%'],['최대낙폭','-35.05%']]}
+        {title:'미국 ETF 백테스트 사례',description:'2012.05~2026.05 미국 1배 ETF 17개를 대상으로 한 전략의 전체 기간 CAGR 21.52%(원화 환산 SPY 17.08%), 최대낙폭 -21.82%. Walk-Forward OOS CAGR은 Rolling 23.82%, Expanding 19.09%(동일 평가기간 SPY 17.17%).',src:'assets/us_etf_case.png',source:'https://github.com/Choe-Useong/quant-trading-system/blob/main/notes/assets/us_etf_case.png',reportId:'us',kind:'chart',altMetrics:[['전략 CAGR','21.52%'],['SPY CAGR','17.08%'],['WF Rolling','23.82%'],['WF Expanding','19.09%']]},
+        {title:'BTC 현물 백테스트 사례',description:'2019.09~2026.10 과거 분석의 연평균 수익률 80.03%(BTC 보유 38.90%). Walk-Forward OOS CAGR은 Rolling 35.56%, Expanding 40.75%(동일 평가기간 BTC 보유 17.47%).',src:'assets/btc_spot_case.png',source:'https://github.com/Choe-Useong/quant-trading-system/blob/main/notes/assets/btc_spot_case.png',reportId:'btc',kind:'chart',altMetrics:[['전략 CAGR','80.03%'],['BTC 보유 CAGR','38.90%'],['WF Rolling','35.56%'],['WF Expanding','40.75%']]},
+        {title:'알트코인 선물 롱·숏 백테스트 사례',description:'2020.01~2026.10, 거래대금과 최근 수익률로 구분한 9개 그룹의 롱·숏 72개 조합을 비교. 누적수익률 1위 조합의 CAGR 40.88%, 최대낙폭 -35.05%. 비교 기준 BTC 보유 CAGR 42.55%.',src:'assets/alt_futures_case_preview.png',source:'https://github.com/Choe-Useong/quant-trading-system/blob/main/notes/assets/alt_futures_case_preview.png',reportId:'futures',kind:'chart',altMetrics:[['사례 CAGR','40.88%'],['BTC 보유 CAGR','42.55%'],['최대낙폭','-35.05%'],['비교 조합','72개']]}
       ],
       processTitle:'정량 투자전략 연구·검증·운영 과정',
       processSummary:'시장 데이터 준비부터 전략 설계, 백테스트·통계적 검증, 주문·계좌 관리까지 주요 기능과 처리 절차',
