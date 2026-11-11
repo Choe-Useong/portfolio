@@ -1,11 +1,20 @@
-# 최우성 포트폴리오 · 16차 시안
+# 최우성 포트폴리오
 
-15차 구성과 실제 논문 요약을 유지하면서 퀀트 프로젝트의 ‘결과’ 설명을 바로잡았습니다.
+정량 투자전략 개발과 데이터 분석 프로젝트, 논문·연구, 자격·수상 및 학력·활동을 정리한 개인 웹 포트폴리오입니다.
 
-- Walk-Forward 수익률을 시스템 전체의 성과처럼 ‘결과’ 카드에 제시하던 항목 삭제
-- ‘구현 결과’ 카드: 전략 연구·백테스트 환경, 통계적 검증 기능, 자동매매 운영 기능
-- 국내 주식·미국 ETF·BTC 현물 수익률은 기존 ‘백테스트 사례’ 이미지 영역에만 유지
-- 사례 영역에 Walk-Forward 수치의 의미 명시
+## 주요 프로젝트
 
-수치의 출처: https://github.com/Choe-Useong/quant-trading-system/blob/main/notes/strategy_examples.md
-원본 아키텍처 PNG는 포함되어 있으며, 백테스트 그래프 PNG는 GitHub 외부 주소 참조(오프라인에서는 미표시 가능).
+**퀀트 리서치·자동매매 시스템**  
+[GitHub 저장소](https://github.com/Choe-Useong/quant-trading-system) · [4개 전략 요약](https://github.com/Choe-Useong/quant-trading-system/blob/main/notes/strategy_summary.md) · [전략별 상세 보고서](https://github.com/Choe-Useong/quant-trading-system/blob/main/notes/strategy_examples.md)
+
+**DART 재무데이터 기반 팩터투자 프레임워크**  
+[GitHub 저장소](https://github.com/Choe-Useong/finance-factor_inv)
+
+> **공개 범위**
+>
+> 시스템 구조와 전략 연구·백테스트 결과를 중심으로 공개합니다. 실제 운용 설정, 계좌 정보, 원천 데이터 및 주문·체결 기록은 포함하지 않습니다.
+
+## 웹페이지
+
+개인 프로젝트, 논문·연구, 자격·수상 및 소개를 구분해 볼 수 있는 웹 포트폴리오입니다.  
+웹페이지는 `index.html`, 콘텐츠는 `data.js`, 화면 구성은 `app.js`와 `styles.css`에서 관리합니다.
