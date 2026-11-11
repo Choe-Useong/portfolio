@@ -84,31 +84,24 @@
   return `${breadcrumb([{text:'홈',href:'#/'},{text:'개인 프로젝트',href:'#/projects'},{text:'퀀트 리서치·자동매매 시스템',href:'#/projects/quant'},{text:'백테스트 보고서'}])}<header class="page-head"><span class="eyebrow">BACKTEST & VALIDATION</span><h1>백테스트·검증 보고서</h1><p>전략별 매매 조건, 과거 성과, 통계적 검증 결과를 구분해 정리</p><div class="page-count">4개 전략 사례</div></header><section class="report-list" aria-label="전략별 백테스트 상세 보고서">${cards}</section><p class="report-index-note">수익률은 개별 전략의 과거 분석 사례이며 퀀트 시스템 전체 성과 또는 미래 수익을 나타내지 않음.</p>`;
 }
   function reportDetailPage(id){
-    const r=(PORTFOLIO.quantReports||[]).find(x=>x.id===id);
-    if(!r)return notFound();
-    const strategy=r.strategy.map(([k,v])=>`<div class="report-definition-row"><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("");
-    const metrics=r.metrics.map(([k,a,b])=>`<tr><th scope="row">${esc(k)}</th><td>${esc(a)}</td><td>${esc(b)}</td></tr>`).join("");
-    const valid=r.validation.map(([k,v])=>`<div class="report-definition-row"><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join("");
-    const chartSrc=r.detailImage||r.image;
-    const combinationFacts=Array.isArray(r.combinationFacts)?r.combinationFacts.map(([k,v])=>`<div class="report-definition-row"><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join(""):"";
-    const combinationSection=r.heatmap?`<section class="report-section"><h2>04. 조합 평가 · 주요 특성</h2><div class="report-performance-layout"><figure class="report-chart"><a href="${esc(r.heatmap)}" target="_blank" rel="noopener noreferrer" aria-label="72개 조합 히트맵 원본"><img src="${esc(r.heatmap)}" alt="72개 롱숏 조합의 CAGR 히트맵" loading="lazy"></a></figure><dl class="report-definitions report-compact-definitions">${combinationFacts}</dl></div></section>`:"";
-    const source="https://github.com/Choe-Useong/quant-trading-system/blob/main/notes/strategy_examples.md#"+r.sourceAnchor;
-    return `${breadcrumb([{text:"홈",href:"#/"},{text:"개인 프로젝트",href:"#/projects"},{text:"퀀트 시스템",href:"#/projects/quant"},{text:"백테스트 보고서",href:"#/projects/quant/reports"},{text:r.title}])}
-      <article class="quant-report">
-        <header class="report-header"><span class="eyebrow">BACKTEST CASE STUDY</span><h1>${esc(r.title)}</h1><p class="report-subtitle">${esc(r.subtitle)}</p><div class="report-date">${esc(r.period)} · 비교 기준: ${esc(r.benchmark)}</div></header>
-        <section class="report-section"><h2>01. 전략 명세</h2><dl class="report-definitions">${strategy}</dl></section>
-        <section class="report-section"><h2>02. 백테스트 성과</h2>
-          <div class="report-performance-layout">
-            <figure class="report-chart"><a href="${esc(chartSrc)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(r.title)} 그래프 원본 보기"><img src="${esc(chartSrc)}" alt="${esc(r.title)} 과거 성과·낙폭 그래프" loading="lazy"></a></figure>
-            <div class="report-performance-metrics"><div class="report-table-scroll"><table class="report-metrics"><thead><tr><th scope="col">지표</th><th scope="col">전략</th><th scope="col">${esc(r.benchmark)}</th></tr></thead><tbody>${metrics}</tbody></table></div></div>
-          </div>
-        </section>
-        <section class="report-section"><h2>03. ${r.id==="futures"?"조합 평가":"전략 검증"} · 동일 기간 비교</h2><dl class="report-definitions">${valid}</dl>${r.interpretation?`<p class="report-interpretation">${esc(r.interpretation)}</p>`:""}</section>
-        ${combinationSection}
-        <div class="report-end-links"><a href="#/projects/quant/reports">← 다른 전략 보고서</a><a href="${esc(source)}" target="_blank" rel="noopener noreferrer">GitHub 상세 연구자료 ↗</a></div>
-      </article>`;
-  }
-    function about(){
+  const r=(PORTFOLIO.quantReports||[]).find(x=>x.id===id);
+  if(!r)return notFound();
+  const strategy=r.strategy.map(([k,v])=>`<div class="report-definition-row"><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('');
+  const metrics=r.metrics.map(([k,a,b])=>`<tr><th scope="row">${esc(k)}</th><td>${esc(a)}</td><td>${esc(b)}</td></tr>`).join('');
+  const valid=r.validation.map(([k,v])=>`<div class="report-definition-row"><dt>${esc(k)}</dt><dd>${esc(v)}</dd></div>`).join('');
+  const source='https://github.com/Choe-Useong/quant-trading-system/blob/main/notes/strategy_examples.md#'+r.sourceAnchor;
+  return `${breadcrumb([{text:'홈',href:'#/'},{text:'개인 프로젝트',href:'#/projects'},{text:'퀀트 시스템',href:'#/projects/quant'},{text:'백테스트 보고서',href:'#/projects/quant/reports'},{text:r.title}])}
+    <article class="quant-report">
+      <header class="report-header"><span class="eyebrow">BACKTEST CASE STUDY</span><h1>${esc(r.title)}</h1><p class="report-subtitle">${esc(r.subtitle)}</p><div class="report-date">${esc(r.period)} · 비교 기준: ${esc(r.benchmark)}</div></header>
+      <section class="report-section"><h2>실험 개요</h2><p class="report-copy">${esc(r.overview)}</p></section>
+      <figure class="report-chart"><a href="${esc(r.image)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(r.title)} 그래프 크게 보기"><img src="${esc(r.image)}" alt="${esc(r.title)} 과거 성과 및 낙폭 그래프" loading="lazy"></a><figcaption>과거 백테스트 그래프 · 클릭하면 원본 크기로 보기</figcaption></figure>
+      <section class="report-section"><h2>전략 조건</h2><dl class="report-definitions">${strategy}</dl></section>
+      <section class="report-section"><h2>전체 기간 백테스트 성과</h2><div class="report-table-scroll"><table class="report-metrics"><thead><tr><th scope="col">지표</th><th scope="col">전략 사례</th><th scope="col">${esc(r.benchmark)}</th></tr></thead><tbody>${metrics}</tbody></table></div><p class="report-footnote">이 표는 전체 기간 사례의 과거 성과이며, 아래 Walk-Forward 평가 결과와 구분</p></section>
+      <section class="report-section"><h2>검증 및 해석</h2><dl class="report-definitions">${valid}</dl><p class="report-interpretation">${esc(r.interpretation)}</p></section>
+      <div class="report-end-links"><a href="#/projects/quant/reports">← 다른 전략 보고서</a><a href="${esc(source)}" target="_blank" rel="noopener noreferrer">GitHub 연구자료 확인 ↗</a></div>
+    </article>`;
+}
+  function about(){
     const e=PORTFOLIO.profile.education, activities=PORTFOLIO.profile.activities.map((it,i)=>`<article class="activity-item"><div class="activity-year">${esc(it.period)}</div><div><h3>${esc(it.name)}</h3><div class="activity-type">${esc(it.kind)}</div><ul>${it.items.map(t=>`<li>${esc(t)}</li>`).join('')}</ul></div></article>`).join('');
     return `${breadcrumb([{text:'홈',href:'#/'},{text:'소개'}])}${pageHeader('ABOUT','학력 및 활동','학력 · 연구실 활동 · 동아리 활동','')}<div class="profile-layout"><section class="profile-box"><div class="overline">EDUCATION</div><h2>학력</h2><div class="education-school">${esc(e.school)}</div><div class="education-major">${esc(e.major)} · ${esc(e.doubleMajor)}</div><div class="education-gpa">학점 <strong>${esc(e.gpa)}</strong></div></section><section class="profile-box"><div class="overline">EXPERIENCE & ACTIVITIES</div><h2>학술·동아리 활동</h2><div class="activity-list">${activities}</div></section></div>`;
   }
