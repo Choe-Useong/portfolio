@@ -85,7 +85,7 @@
   function reportIndexPage(){
   const reports=PORTFOLIO.quantReports||[];
   const cards=reports.map((r,i)=>`<a class="report-list-card" href="#/projects/quant/report/${esc(r.id)}"><span class="report-list-no">${String(i+1).padStart(2,'0')}</span><div><h2>${esc(r.title)}</h2><p>${esc(r.subtitle)}</p><span class="report-list-meta">${esc(r.period)} · 비교 기준: ${esc(r.benchmark)}</span></div><span class="report-list-arrow" aria-hidden="true">→</span></a>`).join('');
-  return `${breadcrumb([{text:'홈',href:'#/'},{text:'개인 프로젝트',href:'#/projects'},{text:'퀀트 리서치·자동매매 시스템',href:'#/projects/quant'},{text:'백테스트 보고서'}])}<header class="page-head"><span class="eyebrow">BACKTEST & VALIDATION</span><h1>백테스트·검증 보고서</h1><p>전략별 매매 조건, 과거 성과, 통계적 검증 결과를 구분해 정리</p><div class="page-count">4개 전략 사례</div></header><section class="report-list" aria-label="전략별 백테스트 상세 보고서">${cards}</section><p class="report-index-note">수익률은 개별 전략의 과거 분석 사례이며 퀀트 시스템 전체 성과 또는 미래 수익을 나타내지 않음.</p>`;
+  return `${breadcrumb([{text:'홈',href:'#/'},{text:'개인 프로젝트',href:'#/projects'},{text:'퀀트 리서치·자동매매 시스템',href:'#/projects/quant'},{text:'백테스트 보고서'}])}<header class="page-head"><span class="eyebrow">BACKTEST & VALIDATION</span><h1>백테스트·검증 보고서</h1><p>전략별 매매 조건과 과거 성과, 통계적 검증 결과를 한곳에 정리</p><div class="page-count">4개 전략 사례</div></header><section class="report-list" aria-label="전략별 백테스트 상세 보고서">${cards}</section><p class="report-index-note">수익률은 개별 전략의 과거 분석 사례이며 퀀트 시스템 전체 성과 또는 미래 수익을 나타내지 않음.</p>`;
 }
   function reportDetailPage(id){
   const r=(PORTFOLIO.quantReports||[]).find(x=>x.id===id);
@@ -100,7 +100,7 @@
       <section class="report-section"><h2>실험 개요</h2><p class="report-copy">${esc(r.overview)}</p></section>
       <figure class="report-chart"><a href="${esc(r.image)}" target="_blank" rel="noopener noreferrer" aria-label="${esc(r.title)} 그래프 크게 보기"><img src="${esc(r.image)}" alt="${esc(r.title)} 과거 성과 및 낙폭 그래프" loading="lazy"></a><figcaption>과거 백테스트 그래프 · 클릭하면 원본 크기로 보기</figcaption></figure>
       <section class="report-section"><h2>전략 조건</h2><dl class="report-definitions">${strategy}</dl></section>
-      <section class="report-section"><h2>전체 기간 백테스트 성과</h2><div class="report-table-scroll"><table class="report-metrics"><thead><tr><th scope="col">지표</th><th scope="col">전략 사례</th><th scope="col">${esc(r.benchmark)}</th></tr></thead><tbody>${metrics}</tbody></table></div><p class="report-footnote">이 표는 전체 기간 사례의 과거 성과이며, 아래 Walk-Forward 평가 결과와 구분</p></section>
+      <section class="report-section"><h2>전체 기간 백테스트 성과</h2><div class="report-table-scroll"><table class="report-metrics"><thead><tr><th scope="col">지표</th><th scope="col">전략 사례</th><th scope="col">${esc(r.benchmark)}</th></tr></thead><tbody>${metrics}</tbody></table></div><p class="report-footnote">이 표는 전체 기간 백테스트 결과입니다. Walk-Forward 성과는 아래에서 별도로 확인할 수 있습니다.</p></section>
       <section class="report-section"><h2>검증 및 해석</h2><dl class="report-definitions">${valid}</dl><p class="report-interpretation">${esc(r.interpretation)}</p></section>
       <div class="report-end-links"><a href="#/projects/quant/reports">← 다른 전략 보고서</a><a href="${esc(source)}" target="_blank" rel="noopener noreferrer">GitHub 연구자료 확인 ↗</a></div>
     </article>`;
