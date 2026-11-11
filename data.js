@@ -191,7 +191,7 @@ const PORTFOLIO = {
         "2014.05.01 – 2026.04.30"
       ]
     ],
-    "interpretation": "전체 기간 고정 전략과 Walk-Forward는 평가 기간과 후보 선정 방식이 다름. OOS CAGR은 Rolling 23.82%, Expanding 19.09%로 동일 평가기간 SPY 17.17%와 구분해 비교해야 함. SPA p값 0.2302로 SPY 대비 초과성과의 통계적 유의성은 확인되지 않았고, 36개 후보 중 정보비율이 양수인 후보는 18개. SPY 수정주가를 환율로 원화 환산했으며 SPY 매수·보유에는 별도 거래 수수료를 반영하지 않음.",
+    "interpretation": "전체 기간 고정 전략과 Walk-Forward는 평가 기간과 후보 선정 방식이 다름. OOS CAGR은 Rolling 23.82%, Expanding 19.09%이며, 같은 평가기간 SPY CAGR은 17.17%임. SPA p값 0.2302로 SPY 대비 초과성과의 통계적 유의성은 확인되지 않았고, 36개 후보 중 정보비율이 양수인 후보는 18개. SPY 수정주가를 환율로 원화 환산했으며 SPY 매수·보유에는 별도 거래 수수료를 반영하지 않음.",
     "sourceAnchor": "strategy-us-etf"
   },
   {
@@ -275,7 +275,7 @@ const PORTFOLIO = {
         "2021.09.25 03:00 – 2026.09.25 02:00 UTC"
       ]
     ],
-    "interpretation": "전체 기간 고정 사례와 Walk-Forward는 평가 기간과 후보 선택 방식이 다름. OOS CAGR은 Rolling 35.56%, Expanding 40.75%로 동일 기간 BTC 보유 17.47%와 구분해 비교해야 함. SPA p값 0.2627로 BTC 보유 대비 초과성과의 통계적 유의성은 확인되지 않음.",
+    "interpretation": "전체 기간 고정 사례와 Walk-Forward는 평가 기간과 후보 선택 방식이 다름. OOS CAGR은 Rolling 35.56%, Expanding 40.75%이며, 같은 평가기간 BTC 보유 CAGR은 17.47%임. SPA p값 0.2627로 BTC 보유 대비 초과성과의 통계적 유의성은 확인되지 않음.",
     "sourceAnchor": "strategy-btc-spot"
   },
   {
@@ -363,7 +363,7 @@ const PORTFOLIO = {
         {title:'국내 주식 백테스트 사례',description:'2016.01~2026.09 업종 내 순위 모멘텀 전략의 전체 기간 CAGR 37.61%(KOSPI200 16.09%), 최대낙폭 -57.79%. Walk-Forward CAGR은 rolling 18.13%, expanding 21.18%(동일 평가기간 KOSPI200 8.52%).',src:'assets/kr_stock_case.png',source:'https://github.com/Choe-Useong/quant-trading-system/blob/main/notes/assets/kr_stock_case.png',reportId:'kr',kind:'chart',altMetrics:[['전략 CAGR','37.61%'],['KOSPI200 CAGR','16.09%'],['WF rolling','18.13%'],['WF expanding','21.18%']]},
         {title:'미국 ETF 백테스트 사례',description:'2012.05~2026.05 미국 1배 ETF 17개를 대상으로 한 전략의 전체 기간 CAGR 21.52%(원화 환산 SPY 17.08%), 최대낙폭 -21.82%. Walk-Forward OOS CAGR은 Rolling 23.82%, Expanding 19.09%(동일 평가기간 SPY 17.17%).',src:'assets/us_etf_case.png',source:'https://github.com/Choe-Useong/quant-trading-system/blob/main/notes/assets/us_etf_case.png',reportId:'us',kind:'chart',altMetrics:[['전략 CAGR','21.52%'],['SPY CAGR','17.08%'],['WF Rolling','23.82%'],['WF Expanding','19.09%']]},
         {title:'BTC 현물 백테스트 사례',description:'2019.09~2026.10 과거 분석의 연평균 수익률 80.03%(BTC 보유 38.90%). Walk-Forward OOS CAGR은 Rolling 35.56%, Expanding 40.75%(동일 평가기간 BTC 보유 17.47%).',src:'assets/btc_spot_case.png',source:'https://github.com/Choe-Useong/quant-trading-system/blob/main/notes/assets/btc_spot_case.png',reportId:'btc',kind:'chart',altMetrics:[['전략 CAGR','80.03%'],['BTC 보유 CAGR','38.90%'],['WF Rolling','35.56%'],['WF Expanding','40.75%']]},
-        {title:'알트코인 선물 롱·숏 백테스트 사례',description:'2020.01~2026.10, 거래대금과 최근 수익률로 구분한 9개 그룹의 롱·숏 72개 조합을 비교. 누적수익률 1위 조합의 CAGR 40.88%, 최대낙폭 -35.05%. 비교 기준 BTC 보유 CAGR 42.55%.',src:'assets/alt_futures_case_preview.png',source:'https://github.com/Choe-Useong/quant-trading-system/blob/main/notes/assets/alt_futures_case_preview.png',reportId:'futures',kind:'chart',altMetrics:[['사례 CAGR','40.88%'],['BTC 보유 CAGR','42.55%'],['최대낙폭','-35.05%'],['비교 조합','72개']]}
+        {title:'알트코인 선물 롱·숏 백테스트 사례',description:'2020.01~2026.10, 거래대금과 최근 수익률을 기준으로 나눈 9개 그룹의 롱·숏 72개 조합을 비교. 누적수익률 1위 조합의 CAGR 40.88%, 최대낙폭 -35.05%. 비교 기준 BTC 보유 CAGR 42.55%.',src:'assets/alt_futures_case_preview.png',source:'https://github.com/Choe-Useong/quant-trading-system/blob/main/notes/assets/alt_futures_case_preview.png',reportId:'futures',kind:'chart',altMetrics:[['사례 CAGR','40.88%'],['BTC 보유 CAGR','42.55%'],['최대낙폭','-35.05%'],['비교 조합','72개']]}
       ],
       processTitle:'정량 투자전략 연구·검증·운영 과정',
       processSummary:'시장 데이터 준비부터 전략 설계, 백테스트·통계적 검증, 주문·계좌 관리까지 주요 기능과 처리 절차',
@@ -394,7 +394,7 @@ const PORTFOLIO = {
       processSummary:'형식이 서로 다른 기업 재무제표를 비교 가능한 데이터로 정리하고, 시장 자료를 결합해 투자지표와 성과를 계산하는 절차',
       processSteps:[
         ['공시 원문 확보','DART 재무제표 텍스트 파일에서 기업별 재무항목 추출'],
-        ['기업별 데이터 정리','기업·결산기준일 단위로 자료를 구분하고 연결·별도 재무제표 확인'],
+        ['기업별 데이터 정리','기업·결산기준일별로 자료를 정리하고 연결·별도 재무제표 확인'],
         ['항목 표준화','IFRS 태그·계정명 통일, 누락 항목 점검과 대체 항목 탐색'],
         ['시장 데이터 결합','시가총액·거래대금·수정주가를 재무정보와 연결'],
         ['투자지표·성과 계산','기업 규모·가치·수익성 등 지표 산출 후 종목 선정과 시장 기준 대비 성과 비교']
@@ -420,7 +420,7 @@ const PORTFOLIO = {
       intro:'시장·기업규모·가치 요인의 영향을 제외한 주가 움직임을 기준으로 KOSPI 705개 종목의 유사성 분석과 분류',
       abstract:"KOSPI 종목이 함께 움직이는 관계를 파악하기 위해 시장 전체의 영향을 제외한 수익률로 주식을 분류하는 연구. Fama–French 3요인 모형으로 시장·기업규모·가치 요인을 통제하고, 요인 조정 후 남은 수익률 간 상관관계를 활용해 계층적 군집화 수행. 기존 수익률만 사용한 방식보다 군집 내부의 유사성이 높았으며, 산업분류와 일부 일치하면서도 서로 다른 산업에 속한 종목 간의 공통 움직임 확인.",
       cards:[
-        {heading:'연구 목적',items:[['공통 시장 영향 구분','여러 종목에 함께 나타나는 수익률 요인의 영향 제외'],['분류 방식 비교','실제 주가 움직임과 기존 산업분류에서 나타나는 종목 관계 비교']]},
+        {heading:'연구 목적',items:[['공통 시장 요인 제거','여러 종목에 함께 나타나는 수익률 요인의 영향 제외'],['분류 방식 비교','실제 주가 움직임과 기존 산업분류에서 나타나는 종목 관계 비교']]},
         {heading:'담당 및 방법',items:[['수익률 분석','Fama-French 3요인 모형으로 공통요인 조정 수익률 계산'],['유사 종목 분류','잔차 상관관계를 거리로 바꿔 Ward 방법으로 군집화'],['비교 실험','FICS·KSIC 및 원수익률 기반 군집과 비교']]},
         {heading:'연구 결과',items:[['분류 결과 비교','군집 수 10~80개에서 원수익률 방식보다 높은 실루엣 계수'],['산업분류와 비교','기존 산업분류와 겹치는 관계 및 산업 경계를 넘는 종목 관계 관찰'],['학술 발표','ASK 2026 발표']]}
       ],
