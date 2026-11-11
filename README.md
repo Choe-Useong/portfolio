@@ -17,7 +17,7 @@
 
 ## 성과 기준과 출처
 
-전략 성과는 **각 전략의 과거 백테스트 사례**이며 자동매매 시스템 전체 또는 실제 계좌의 운용 성과를 의미하지 않습니다. 전체 기간 백테스트와 Walk-Forward OOS는 평가기간과 산출 방식이 다를 수 있습니다. 특히 국내 주식의 전체 기간 CAGR은 일봉 연 252개 수익률 관측치 기준으로 연환산하므로 시작일·종료일만으로 계산한 달력일 CAGR과 달라질 수 있습니다.
+전략 성과는 **각 전략의 과거 백테스트 사례**이며 자동매매 시스템 전체 또는 실제 계좌의 운용 성과를 의미하지 않습니다. 국내 주식·미국 ETF의 전체 기간 및 Walk-Forward CAGR은 일봉 연 252개 수익률 관측치, BTC 현물은 1시간봉 연 8,760개 관측치 기준으로 연환산했습니다. 전체 기간 백테스트와 Walk-Forward OOS는 평가기간과 후보 선택 방식이 다릅니다. Walk-Forward OOS 성과에는 초기자금과 구간 첫날 진입 비용을 반영했습니다.
 
 공개 원본: [퀀트 시스템 전략별 상세 보고서](https://github.com/Choe-Useong/quant-trading-system/blob/main/notes/strategy_examples.md) · [요약 보고서](https://github.com/Choe-Useong/quant-trading-system/blob/main/notes/strategy_summary.md)
 
