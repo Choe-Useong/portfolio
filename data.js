@@ -452,7 +452,7 @@ const PORTFOLIO = {
       links:[{label:'논문 원문',url:'https://www.manuscriptlink.com/society/kips/conference/ack2024/file/downloadSoConfManuscript/abs/KIPS_C2024B0077'}]
     },
     {
-      id:'cvae',title:'CVAE-ANP 산업 공정 이상 탐지 및 진단',short:'제조 공정의 이상 징후를 탐지하는 모델의 실험 코드와 설정값 조정',date:'2026',affiliation:'팀 연구 · 제2저자',conference:'ASK 2026',
+      id:'cvae',title:'CVAE-ANP 산업 공정 이상 탐지 및 진단',short:'제조 공정의 이상 징후를 탐지하는 모델의 실험 코드와 설정값 조정',date:'2025.11 — 2026.03',affiliation:'팀 연구 · 제2저자',conference:'ASK 2026',
       intro:'산업 공정의 이상 징후를 탐지·진단하는 모델 연구에서 실험 코드 구현 및 모델 설정값 조정 담당',
       abstract:"스마트 제조 공정에서 이상 여부뿐 아니라 진단 근거와 예측의 불확실성까지 확인하기 위한 연구. 센서 수치와 이미지 등 서로 다른 종류의 데이터를 분석하도록 CVAE와 ANP를 결합하고, 산출한 불확실성 정보를 바탕으로 XGBoost 이상 진단 수행. 비교 모델보다 높은 분류 정확도를 확인했으며, 현장 관리자가 진단 결과를 검토하는 Human-in-the-Loop 방식의 활용 가능성 제시.",
       cards:[
