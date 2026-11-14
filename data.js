@@ -403,19 +403,6 @@ const PORTFOLIO = {
   ],
   research: [
     {
-      id:'optimization',title:'시변 기대수익률·공분산 기반 포트폴리오 최적화',short:'시장 변화에 따라 수익률과 위험을 추정해 ETF 9종의 투자 비중 계산',date:'2025.05 — 2025.09',affiliation:'팀 연구 · 제1저자',conference:'ACK 2025',
-      intro:'시장 상황에 따라 달라지는 예상 수익률과 위험을 추정하고, ETF 9종의 투자 비중 및 과거 성과 비교',
-      abstract:"포트폴리오를 구성할 때 발생하는 기대수익률 추정의 불안정성과 시장 상황에 따른 위험 변화에 대응하기 위한 연구. 상태공간모형으로 자산별 기대수익률을 시점마다 추정하고, James–Stein 수축 추정으로 추정값을 보정. DCC-GARCH로 자산 간 상관관계 변화를 반영해 투자 비중을 계산. 실증분석에서 연평균 성장률 10.91%를 기록했으며, 비교 전략보다 높은 위험 조정 성과 확인.",
-      cards:[
-        {heading:'연구 목적',items:[['시장 변화 반영','시점별 예상 수익률과 자산 간 움직임 추정'],['자산 배분','미국 상장 ETF 9종의 투자 비중 계산']]},
-        {heading:'담당 및 방법',items:[['수익률 추정','Kalman Filter로 예상 수익률 추정, James-Stein 방식으로 추정값 보정'],['위험 추정','DCC-GARCH로 자산 간 수익률 움직임과 위험 변화 계산'],['실험·논문','자산 비중 최적화, 과거 성과 비교, 연구 기획 및 논문 작성']]},
-        {heading:'연구 결과',items:[['연평균 수익률','최적화 10.91% · 동일가중 9.54% · SPY 10.22%'],['최대 낙폭','최적화 -49.99% · 동일가중 -51.67%'],['학술 발표','ACK 2025 발표']]}
-      ],
-      skills:['시계열 모델링','Kalman Filter','James-Stein','DCC-GARCH','포트폴리오 최적화','백테스트'],
-      links:[{label:'논문 원문',url:'https://www.manuscriptlink.com/society/kips/conference/ack2025/file/downloadSoConfManuscript/abs/KIPS_C2025B0034F'}],
-      note:'성과 비교는 제공된 논문·역량기술서의 과거 분석 결과이며 미래 성과를 뜻하지 않습니다.'
-    },
-    {
       id:'clustering',title:'공통요인 조정 수익률 기반 주식 군집화',short:'공통적인 시장 영향을 제외하고 주식 간 움직임이 비슷한 종목을 분류',date:'2025.11 — 2026.03',affiliation:'팀 연구 · 제1저자',conference:'ASK 2026',
       intro:'시장·기업규모·가치 요인의 영향을 제외한 주가 움직임을 기준으로 KOSPI 705개 종목의 유사성 분석과 분류',
       abstract:"KOSPI 종목이 함께 움직이는 관계를 파악하기 위해 시장 전체의 영향을 제외한 수익률로 주식을 분류하는 연구. Fama–French 3요인 모형으로 시장·기업규모·가치 요인을 통제하고, 요인 조정 후 남은 수익률 간 상관관계를 활용해 계층적 군집화 수행. 기존 수익률만 사용한 방식보다 군집 내부의 유사성이 높았으며, 산업분류와 일부 일치하면서도 서로 다른 산업에 속한 종목 간의 공통 움직임 확인.",
@@ -426,30 +413,6 @@ const PORTFOLIO = {
       ],
       skills:['요인모형','상관관계 분석','계층적 군집화','실루엣 계수','Python','비교 실험 설계'],
       links:[{label:'논문 원문',url:'https://ask.kips.or.kr/file/downloadSoConfManuscript/abs/KIPS_C2026A0032F'}]
-    },
-    {
-      id:'rl-portfolio',title:'강화학습 기반 산업 포트폴리오 트레이딩',short:'시장·경제지표·공시정보를 이용한 강화학습 투자모델 실험',date:'2024.11 — 2025.03',affiliation:'팀 연구 · 제1저자',conference:'ASK 2025',
-      intro:'산업별 투자 비중을 결정하는 강화학습 모델의 입력 데이터 구성, 평가 방법 설계 및 실험 결과 분석',
-      abstract:"시장 지표와 기업 재무정보, 거시경제지표를 활용해 투자 비중을 결정하는 강화학습 기반 주식투자 모델 연구. 2014~2025년 금융·재무 데이터를 바탕으로, CNN 기반 정책 신경망인 EIIE를 이용해 포트폴리오 투자 실험 진행. 단순 매수 후 보유하는 Buy and Hold 전략과 비교한 결과, 강화학습 모델의 수익률 개선 확인.",
-      cards:[
-        {heading:'연구 목적',items:[['산업별 투자 비중','강화학습으로 투자 대상과 비중을 조정하는 모델 연구']]},
-        {heading:'담당 및 방법',items:[['데이터 준비','금융·거시경제·공시 자료 정리 및 실제 이용 가능 시점 반영'],['평가 기준','투자 대상 종목군과 테스트 구간 설계'],['결과 분석','실험 수행 및 논문 작성']]},
-        {heading:'연구 결과',items:[['테스트 기간 위험 대비 수익','Sharpe 0.162 · 단순 보유 -0.042'],['최대 낙폭','강화학습 모델 -17.5% · 단순 보유 -31.2%'],['학술 발표','ASK 2025 발표']]}
-      ],
-      skills:['강화학습 연구','시계열 데이터 정렬','금융 데이터 전처리','백테스트 설계','실험 분석'],
-      links:[{label:'논문 원문',url:'https://www.manuscriptlink.com/society/kips/conference/ask2025/file/downloadSoConfManuscript/abs/KIPS_C2025A0027F'}]
-    },
-    {
-      id:'wavelet',title:'웨이블릿 변환과 TFT 기반 주가지수 예측',short:'주가 데이터의 잡음을 줄이는 방법과 주가지수 예측 모델 비교',date:'2024.06 — 2024.10',affiliation:'팀 연구 · 제1저자',conference:'ACK 2024',
-      intro:'웨이블릿 변환으로 금융 시계열을 처리하고 TFT 모델을 적용한 주가지수 예측 실험 참여',
-      abstract:"금융 시계열 데이터의 잡음이 많고 머신러닝 예측 결과를 해석하기 어렵다는 문제를 다룬 주가지수 예측 연구. 웨이블릿 변환을 적용해 금융 데이터의 잡음을 줄이고, 변수의 중요도와 시점별 영향을 살펴볼 수 있는 Temporal Fusion Transformer(TFT) 모델로 주가지수 예측을 시도. 금융 분야에서 예측 모델의 활용성과 해석 가능성을 높이는 방법 제시.",
-      cards:[
-        {heading:'연구 목적',items:[['예측 성능 확인','주가 데이터의 잡음 처리와 주가지수 예측 실험']]},
-        {heading:'담당 및 방법',items:[['자료 준비','주가지수 예측에 필요한 금융 시계열 데이터 정리'],['노이즈 처리','웨이블릿 변환을 활용한 데이터 처리와 실험 구성'],['연구 수행','연구 기획, 결과 분석, 논문 작성']]},
-        {heading:'연구 결과',items:[['학술 발표','ACK 2024 논문 발표']]}
-      ],
-      skills:['웨이블릿 변환','Temporal Fusion Transformer','금융 시계열','실험 설계','결과 분석'],
-      links:[{label:'논문 원문',url:'https://www.manuscriptlink.com/society/kips/conference/ack2024/file/downloadSoConfManuscript/abs/KIPS_C2024B0077'}]
     },
     {
       id:'cvae',title:'CVAE-ANP 산업 공정 이상 탐지 및 진단',short:'제조 공정의 이상 징후를 탐지하는 모델의 실험 코드와 설정값 조정',date:'2025.11 — 2026.03',affiliation:'팀 연구 · 제2저자',conference:'ASK 2026',
@@ -474,6 +437,43 @@ const PORTFOLIO = {
       ],
       skills:['PPO','강화학습 환경 설계','에이전트 구현','모델 학습','실험 분석'],
       links:[{label:'논문 원문',url:'https://ack.kips.or.kr/file/downloadSoConfManuscript/abs/KIPS_C2025B0035F'}]
+    },
+    {
+      id:'optimization',title:'시변 기대수익률·공분산 기반 포트폴리오 최적화',short:'시장 변화에 따라 수익률과 위험을 추정해 ETF 9종의 투자 비중 계산',date:'2025.05 — 2025.09',affiliation:'팀 연구 · 제1저자',conference:'ACK 2025',
+      intro:'시장 상황에 따라 달라지는 예상 수익률과 위험을 추정하고, ETF 9종의 투자 비중 및 과거 성과 비교',
+      abstract:"포트폴리오를 구성할 때 발생하는 기대수익률 추정의 불안정성과 시장 상황에 따른 위험 변화에 대응하기 위한 연구. 상태공간모형으로 자산별 기대수익률을 시점마다 추정하고, James–Stein 수축 추정으로 추정값을 보정. DCC-GARCH로 자산 간 상관관계 변화를 반영해 투자 비중을 계산. 실증분석에서 연평균 성장률 10.91%를 기록했으며, 비교 전략보다 높은 위험 조정 성과 확인.",
+      cards:[
+        {heading:'연구 목적',items:[['시장 변화 반영','시점별 예상 수익률과 자산 간 움직임 추정'],['자산 배분','미국 상장 ETF 9종의 투자 비중 계산']]},
+        {heading:'담당 및 방법',items:[['수익률 추정','Kalman Filter로 예상 수익률 추정, James-Stein 방식으로 추정값 보정'],['위험 추정','DCC-GARCH로 자산 간 수익률 움직임과 위험 변화 계산'],['실험·논문','자산 비중 최적화, 과거 성과 비교, 연구 기획 및 논문 작성']]},
+        {heading:'연구 결과',items:[['연평균 수익률','최적화 10.91% · 동일가중 9.54% · SPY 10.22%'],['최대 낙폭','최적화 -49.99% · 동일가중 -51.67%'],['학술 발표','ACK 2025 발표']]}
+      ],
+      skills:['시계열 모델링','Kalman Filter','James-Stein','DCC-GARCH','포트폴리오 최적화','백테스트'],
+      links:[{label:'논문 원문',url:'https://www.manuscriptlink.com/society/kips/conference/ack2025/file/downloadSoConfManuscript/abs/KIPS_C2025B0034F'}],
+      note:'성과 비교는 제공된 논문·역량기술서의 과거 분석 결과이며 미래 성과를 뜻하지 않습니다.'
+    },
+    {
+      id:'rl-portfolio',title:'강화학습 기반 산업 포트폴리오 트레이딩',short:'시장·경제지표·공시정보를 이용한 강화학습 투자모델 실험',date:'2024.11 — 2025.03',affiliation:'팀 연구 · 제1저자',conference:'ASK 2025',
+      intro:'산업별 투자 비중을 결정하는 강화학습 모델의 입력 데이터 구성, 평가 방법 설계 및 실험 결과 분석',
+      abstract:"시장 지표와 기업 재무정보, 거시경제지표를 활용해 투자 비중을 결정하는 강화학습 기반 주식투자 모델 연구. 2014~2025년 금융·재무 데이터를 바탕으로, CNN 기반 정책 신경망인 EIIE를 이용해 포트폴리오 투자 실험 진행. 단순 매수 후 보유하는 Buy and Hold 전략과 비교한 결과, 강화학습 모델의 수익률 개선 확인.",
+      cards:[
+        {heading:'연구 목적',items:[['산업별 투자 비중','강화학습으로 투자 대상과 비중을 조정하는 모델 연구']]},
+        {heading:'담당 및 방법',items:[['데이터 준비','금융·거시경제·공시 자료 정리 및 실제 이용 가능 시점 반영'],['평가 기준','투자 대상 종목군과 테스트 구간 설계'],['결과 분석','실험 수행 및 논문 작성']]},
+        {heading:'연구 결과',items:[['테스트 기간 위험 대비 수익','Sharpe 0.162 · 단순 보유 -0.042'],['최대 낙폭','강화학습 모델 -17.5% · 단순 보유 -31.2%'],['학술 발표','ASK 2025 발표']]}
+      ],
+      skills:['강화학습 연구','시계열 데이터 정렬','금융 데이터 전처리','백테스트 설계','실험 분석'],
+      links:[{label:'논문 원문',url:'https://www.manuscriptlink.com/society/kips/conference/ask2025/file/downloadSoConfManuscript/abs/KIPS_C2025A0027F'}]
+    },
+    {
+      id:'wavelet',title:'웨이블릿 변환과 TFT 기반 주가지수 예측',short:'주가 데이터의 잡음을 줄이는 방법과 주가지수 예측 모델 비교',date:'2024.06 — 2024.10',affiliation:'팀 연구 · 제1저자',conference:'ACK 2024',
+      intro:'웨이블릿 변환으로 금융 시계열을 처리하고 TFT 모델을 적용한 주가지수 예측 실험 참여',
+      abstract:"금융 시계열 데이터의 잡음이 많고 머신러닝 예측 결과를 해석하기 어렵다는 문제를 다룬 주가지수 예측 연구. 웨이블릿 변환을 적용해 금융 데이터의 잡음을 줄이고, 변수의 중요도와 시점별 영향을 살펴볼 수 있는 Temporal Fusion Transformer(TFT) 모델로 주가지수 예측을 시도. 금융 분야에서 예측 모델의 활용성과 해석 가능성을 높이는 방법 제시.",
+      cards:[
+        {heading:'연구 목적',items:[['예측 성능 확인','주가 데이터의 잡음 처리와 주가지수 예측 실험']]},
+        {heading:'담당 및 방법',items:[['자료 준비','주가지수 예측에 필요한 금융 시계열 데이터 정리'],['노이즈 처리','웨이블릿 변환을 활용한 데이터 처리와 실험 구성'],['연구 수행','연구 기획, 결과 분석, 논문 작성']]},
+        {heading:'연구 결과',items:[['학술 발표','ACK 2024 논문 발표']]}
+      ],
+      skills:['웨이블릿 변환','Temporal Fusion Transformer','금융 시계열','실험 설계','결과 분석'],
+      links:[{label:'논문 원문',url:'https://www.manuscriptlink.com/society/kips/conference/ack2024/file/downloadSoConfManuscript/abs/KIPS_C2024B0077'}]
     }
   ],
   awards:[
