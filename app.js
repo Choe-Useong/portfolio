@@ -8,7 +8,7 @@
     certificate:'<svg viewBox="0 0 56 56" aria-hidden="true"><rect x="13" y="6" width="30" height="42" rx="4"/><path d="M20 18h16M20 26h16M20 34h7"/><circle cx="34" cy="35" r="5"/></svg>'
   };
   const categories={
-    projects:{number:'01',eng:'PERSONAL PROJECTS',label:'개인 프로젝트',summary:'투자전략 연구·백테스트·자동매매와 재무데이터 기반 투자 분석',count:'2개 프로젝트',icon:'project',data:PORTFOLIO.projects},
+    projects:{number:'01',eng:'PERSONAL PROJECTS',label:'개인 프로젝트',summary:'투자전략 연구·백테스트·자동매매 시스템',count:'1개 프로젝트',icon:'project',data:PORTFOLIO.projects.filter(item=>!item.hidden)},
     research:{number:'02',eng:'RESEARCH & PAPERS',label:'논문 및 연구',summary:'포트폴리오 연구, 주식 분류, 강화학습과 주가 예측',count:'6개 연구',icon:'research',data:PORTFOLIO.research},
     awards:{number:'03',eng:'CERTIFICATIONS & AWARDS',label:'자격증 및 수상',summary:'보유 자격증 4개와 학술·공모전 수상 2건',count:'자격증 4개 · 수상 2개',icon:'awards',data:PORTFOLIO.awards}
   };
