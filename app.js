@@ -84,8 +84,10 @@
   }
   function reportIndexPage(){
   const reports=PORTFOLIO.quantReports||[];
+  const document=PORTFOLIO.investmentReport;
+  const reportDocument=document?`<section class="report-document" aria-labelledby="investment-report-title"><div><span class="report-document-type">PDF · ${esc(document.pages)}쪽</span><h2 id="investment-report-title">${esc(document.title)}</h2><p>${esc(document.description)}</p></div>${linkButtons([{label:'PDF 보고서 보기',url:document.url}])}</section>`:'';
   const cards=reports.map((r,i)=>`<a class="report-list-card" href="#/projects/quant/report/${esc(r.id)}"><span class="report-list-no">${String(i+1).padStart(2,'0')}</span><div><h2>${esc(r.title)}</h2><p>${esc(r.subtitle)}</p><span class="report-list-meta">${esc(r.period)} · 비교 기준: ${esc(r.benchmark)}</span></div><span class="report-list-arrow" aria-hidden="true">→</span></a>`).join('');
-  return `${breadcrumb([{text:'홈',href:'#/'},{text:'개인 프로젝트',href:'#/projects'},{text:'퀀트 리서치·자동매매 시스템',href:'#/projects/quant'},{text:'백테스트 보고서'}])}<header class="page-head"><span class="eyebrow">BACKTEST & VALIDATION</span><h1>백테스트·검증 보고서</h1><p>전략별 매매 조건과 과거 성과, 통계적 검증 결과를 한곳에 정리</p><div class="page-count">4개 전략 사례</div></header><section class="report-list" aria-label="전략별 백테스트 상세 보고서">${cards}</section><p class="report-index-note">수익률은 개별 전략의 과거 분석 사례이며 퀀트 시스템 전체 성과 또는 미래 수익을 나타내지 않음.</p>`;
+  return `${breadcrumb([{text:'홈',href:'#/'},{text:'개인 프로젝트',href:'#/projects'},{text:'퀀트 리서치·자동매매 시스템',href:'#/projects/quant'},{text:'백테스트 보고서'}])}<header class="page-head"><span class="eyebrow">BACKTEST & VALIDATION</span><h1>백테스트·검증 보고서</h1><p>전략별 매매 조건과 과거 성과, 통계적 검증 결과를 한곳에 정리</p><div class="page-count">4개 전략 사례</div></header>${reportDocument}<section class="report-list" aria-label="전략별 백테스트 상세 보고서">${cards}</section><p class="report-index-note">수익률은 개별 전략의 과거 분석 사례이며 퀀트 시스템 전체 성과 또는 미래 수익을 나타내지 않음.</p>`;
 }
   function reportDetailPage(id){
   const r=(PORTFOLIO.quantReports||[]).find(x=>x.id===id);

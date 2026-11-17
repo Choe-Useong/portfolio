@@ -1,6 +1,14 @@
 'use strict';
 // 역량기술서 v2.1에서 확인되는 내용만 정리. 세부 성과는 제공된 GitHub 보고서 기준.
+const INVESTMENT_REPORT = {
+  title:'투자전략 연구 보고서',
+  description:'국내 주식·미국 ETF·암호화폐 전략의 기간별 성과, 수익 집중도, 손실 회복기간 및 위험 필터 분석',
+  label:'연구 보고서 PDF',
+  url:'papers/investment_strategy_report.pdf',
+  pages:12
+};
 const PORTFOLIO = {
+  investmentReport:INVESTMENT_REPORT,
   quantReports: [
   {
     "id": "kr",
@@ -357,7 +365,7 @@ const PORTFOLIO = {
         {heading:'구현 결과', items:[['전략 연구·백테스트 환경','종목 선정·비중 계산부터 여러 조건의 백테스트와 성과 비교까지 수행하는 시스템 구축'],['통계적 검증 기능','Walk-Forward·PBO·SPA·StepM 검증과 분석 결과 저장·조회 기능 구현'],['자동매매 운영 기능','주문 계획·제출, 체결 확인, 계좌 상태 기록, 중복 주문 방지 및 알림 기능 구현']]}
       ],
       skills:['Python','금융 데이터 처리','백테스트','통계적 검증','투자전략 구현','주문·계좌 관리'],
-      links:[{label:'GitHub 저장소',url:'https://github.com/Choe-Useong/quant-trading-system'},{label:'백테스트·검증 보고서',url:'#/projects/quant/reports'}],
+      links:[{label:'GitHub 저장소',url:'https://github.com/Choe-Useong/quant-trading-system'},{label:'백테스트·검증 보고서',url:'#/projects/quant/reports'},{label:INVESTMENT_REPORT.label,url:INVESTMENT_REPORT.url}],
       visuals:[
         {title:'시스템 아키텍처',description:'데이터 준비, 투자전략 계산, 성과 검증, 주문·계좌 관리 기능의 전체 구성도',src:'https://raw.githubusercontent.com/Choe-Useong/quant-trading-system/main/notes/assets/system_architecture.png',source:'https://github.com/Choe-Useong/quant-trading-system/blob/main/notes/assets/system_architecture.png',kind:'architecture',altSteps:['데이터 수집·캐시','전략 신호·선정','목표 비중 계산','검증 및 주문 관리']},
         {title:'국내 주식 백테스트 사례',description:'2016.01~2026.09 업종 내 순위 모멘텀 전략의 전체 기간 CAGR 37.56%(KOSPI200 16.09%), 최대낙폭 -57.79%. Walk-Forward CAGR은 rolling 23.10%, expanding 26.67%(동일 평가기간 KOSPI200 8.77%).',src:'assets/kr_stock_case.png',source:'https://github.com/Choe-Useong/quant-trading-system/blob/main/notes/assets/kr_stock_case.png',reportId:'kr',kind:'chart',altMetrics:[['전략 CAGR','37.56%'],['KOSPI200 CAGR','16.09%'],['WF rolling','23.10%'],['WF expanding','26.67%']]},
