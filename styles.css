@@ -294,3 +294,6 @@
 /* Home: concise name-only hero, education and activities remain under the top 소개 navigation. */
 .home-hero{grid-template-columns:minmax(0,1fr);gap:0;padding:83px 0 72px}
 @media(max-width:700px){.home-hero{grid-template-columns:minmax(0,1fr);gap:0;padding:62px 0 50px}}
+
+/* backtest workflow diagram: tall image, capped height */
+.visual-card--flow .visual-image--architecture img{width:auto;max-width:100%;max-height:900px;margin:0 auto}
